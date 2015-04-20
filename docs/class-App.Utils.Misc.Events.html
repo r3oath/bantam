@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class App\Utils\Misc\Events | Bantam</title>
+
+	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li class="active">
+					<a href="namespace-App.html">
+						App<span></span>
+					</a>
+
+						<ul>
+				<li class="active">
+					<a href="namespace-App.Utils.html">
+						Utils<span></span>
+					</a>
+
+						<ul>
+				<li>
+					<a href="namespace-App.Utils.Data.html">
+						Data					</a>
+
+						</li>
+				<li>
+					<a href="namespace-App.Utils.Http.html">
+						Http					</a>
+
+						</li>
+				<li>
+					<a href="namespace-App.Utils.Input.html">
+						Input					</a>
+
+						</li>
+				<li class="active">
+					<a href="namespace-App.Utils.Misc.html">
+						Misc					</a>
+
+						</li>
+				<li>
+					<a href="namespace-App.Utils.User.html">
+						User					</a>
+
+						</li>
+							</ul></li></ul></li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-App.Utils.Misc.Config.html">Config</a></li>
+				<li class="active"><a href="class-App.Utils.Misc.Events.html">Events</a></li>
+				<li><a href="class-App.Utils.Misc.Sundial.html">Sundial</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-App.Utils.Misc.html" title="Summary of App\Utils\Misc"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Events</h1>
+
+
+	<div class="description">
+	<p>Provides the ability to register and fire events, usefull if you want to seperate
+out your core functionality and your additional (such as plugins).</p>
+
+<pre><span class="php-comment">// Registers a new function for the 'user_registered'</span>
+<span class="php-comment">// event (inside a plugin file for example).</span>
+Events::register(<span class="php-quote">'user_registered'</span>, <span class="php-keyword1">function</span>(<span class="php-var">$args</span>){
+    <span class="php-var">$user_name</span> = <span class="php-var">$args</span>[<span class="php-num">0</span>]; <span class="php-comment">// Would store 'Bob123', see below.</span>
+});
+
+<span class="php-comment">// Fires the 'user_registerd' event from your core code, optionally passing in</span>
+<span class="php-comment">// arguments to all the registered functions for this particular event.</span>
+Events::fire(<span class="php-quote">'user_registered'</span>, <span class="php-quote">'Bob123'</span>);</pre>
+	</div>
+
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-App.html">App</a>\<a href="namespace-App.Utils.html">Utils</a>\<a href="namespace-App.Utils.Misc.html">Misc</a><br>
+		<b>Package:</b> Misc<br>
+
+				<b>License:</b>
+				<a href="http://opensource.org/licenses/MIT">MIT License (MIT)</a><br>
+				<b>Author:</b>
+				Tristan Strathearn <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#114;&#x33;&#x6f;&#97;&#x74;&#x68;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#109;">&#114;&#x33;&#x6f;&#97;&#x74;&#x68;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#109;</a><br>
+			<b>Located at</b> <a href="source-class-App.Utils.Misc.Events.html#30-118" title="Go to source code">misc/Events.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="register" id="_register">
+
+		<td class="attributes"><code>
+			 public static
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_register">#</a>
+		<code><a href="source-class-App.Utils.Misc.Events.html#51-65" title="Go to source code">register</a>( <span>string <var>$name</var></span>, <span>mixed <var>$closure</var></span> )</code>
+
+		<div class="description short">
+			<p>Registers a new event and a corresponding callback function. The callback
+can either be passed in as a Closure or as a function string.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Registers a new event and a corresponding callback function. The callback
+can either be passed in as a Closure or as a function string.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$name</var></dt>
+					<dd>The name of the event to register.</dd>
+					<dt><var>$closure</var></dt>
+					<dd>The Closure or user function to call on this event.</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="fire" id="_fire">
+
+		<td class="attributes"><code>
+			 public static
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_fire">#</a>
+		<code><a href="source-class-App.Utils.Misc.Events.html#67-117" title="Go to source code">fire</a>( )</code>
+
+		<div class="description short">
+			<p>Fire the specified event and pass along the corresponding arguments to the
+registered callback functions. The format for this functions arguments are
+'event_name' [, arg1[, arg2]]. For example, firing the event 'system_started'
+and the time would look like fire('system_started', time()). Any arguments
+passed to this function after the event name will be passed to the registered
+callback functions as an array.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Fire the specified event and pass along the corresponding arguments to the
+registered callback functions. The format for this functions arguments are
+'event_name' [, arg1[, arg2]]. For example, firing the event 'system_started'
+and the time would look like fire('system_started', time()). Any arguments
+passed to this function after the event name will be passed to the registered
+callback functions as an array.</p>
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		Bantam API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>
