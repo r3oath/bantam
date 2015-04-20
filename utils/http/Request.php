@@ -141,35 +141,24 @@ class Request {
     }
 
     /**
-    * Returns an array of $_GET parameters and their associated values if they
-    * are present in the allowed parameters list.
-    * @param array $params The list of allowed parameters.
-    * @return array
+    * Returns an array of the parameters specified in the params array and their
+    * respective values if they are set in either the $_POST or $_GET globals.
+    * If you'd like to limit your search to a particular request type, pass in the
+    * request type as a second parameter, eg: 'put'.
+    * @param array $params The list of parameters to search and collect.
+    * @param string $limit_type If set, will limit parameter search to only the given request.
     */
-    public static function allowedGetParams($params=[]) {
-        $allowed = [];
-        foreach ($params as $key) {
-            if(isset($_GET[$key])) {
-                $allowed[$key] = $_GET[$key];
-            } else {
-                $allowed[$key] = null;
-            }
+    public static function allowedParams($params=[], $limit_type=null) {
+        if($limit_type !== null && !static::isType($limit_type)) {
+            return null;
         }
 
-        return $allowed;
-    }
-
-    /**
-    * Returns an array of $_POST parameters and their associated values if they
-    * are present in the allowed parameters list.
-    * @param array $params The list of allowed parameters.
-    * @return array
-    */
-    public static function allowedPostParams($params=[]) {
-        $allowed = [];
+        $allowed = array();
         foreach ($params as $key) {
-            if(isset($_POST[$key])) {
+            if(isset($_POST[$key]) && !Request::isGet()) {
                 $allowed[$key] = $_POST[$key];
+            } else if(isset($_GET[$key]) && Request::isGet()) {
+                $allowed[$key] = $_GET[$key];
             } else {
                 $allowed[$key] = null;
             }
