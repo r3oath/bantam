@@ -38,9 +38,10 @@ use \App\Utils\Data\Prelims;
 class Crypto {
     const cipher_type     = MCRYPT_RIJNDAEL_256;
     const cipher_mode     = MCRYPT_MODE_CBC;
-    const salt_bytes_size = 32;
+    const key_bytes_size  = 32;
     const password_algo   = PASSWORD_BCRYPT;
-    const salt_error      = 'Salt required, please pass it in, start a session or set \'bantam_app_secret_key\' to a secure value in Config.';
+    const key_error       = 'Key required, pass one in as an argument, start a session or set \'bantam_app_secret_key\' in your Config.';
+    const salt_error      = 'Salt required, start a session or set \'bantam_app_secret_key\' in your Config.';
 
     /**
     * Encrypt a string and return the base64 encoded result. If the size
@@ -52,14 +53,14 @@ class Crypto {
         if($key === null) {
             $key = Config::get('bantam_app_secret_key', null);
             if($key === null && !Session::hasBegun()) {
-                throw new \ErrorException(self::salt_error);
+                throw new \ErrorException(self::key_error);
             }
 
             if(Session::hasBegun() && Session::valid()) {
-                $key = Session::get('salt');
+                $key = Session::get('key');
                 if($key === null) {
-                    $key = openssl_random_pseudo_bytes(self::salt_bytes_size);
-                    Session::set('salt', $key);
+                    $key = openssl_random_pseudo_bytes(self::key_bytes_size);
+                    Session::set('key', $key);
                 }
             }
         }
@@ -81,14 +82,14 @@ class Crypto {
         if($key === null) {
             $key = Config::get('bantam_app_secret_key', null);
             if($key === null && !Session::hasBegun()) {
-                throw new \ErrorException(self::salt_error);
+                throw new \ErrorException(self::key_error);
             }
 
             if(Session::hasBegun() && Session::valid()) {
-                $key = Session::get('salt');
+                $key = Session::get('key');
                 if($key === null) {
-                    $key = openssl_random_pseudo_bytes(self::salt_bytes_size);
-                    Session::set('salt', $key);
+                    $key = openssl_random_pseudo_bytes(self::key_bytes_size);
+                    Session::set('key', $key);
                 }
             }
         }
@@ -114,14 +115,14 @@ class Crypto {
     public static function sign($string) {
         $salt = Config::get('bantam_app_secret_key', null);
         if($salt === null && !Session::hasBegun()) {
-            throw new \ErrorException('You need to set \'key\' in your Config or start a Session.');
+            throw new \ErrorException(static::salt_error);
         }
 
         if(Session::hasBegun() && Session::isValid()) {
-            $salt = Session::get('salt');
+            $salt = Session::get('key');
             if($salt === null) {
-                $salt = openssl_random_pseudo_bytes(self::salt_bytes_size);
-                Session::set('salt', $salt);
+                $salt = openssl_random_pseudo_bytes(self::key_bytes_size);
+                Session::set('key', $salt);
             }
         }
 
