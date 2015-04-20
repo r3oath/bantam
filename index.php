@@ -5,12 +5,9 @@ require('Autoload.php');
 
 // Load in our class requirements for this page.
 use App\Utils\Data\Assets;
-use App\Utils\Data\Crypto;
 use App\Utils\Misc\Config;
 use App\Utils\Misc\Sundial;
 use App\Utils\User\I18N;
-
-use App\Utils\Input\Form;
 
 // Load our config file.
 Config::create(Assets::load('app/config.php'));
