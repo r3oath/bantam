@@ -48,27 +48,27 @@ class Crypto {
     * @param string $string The string to encrypt.
     * @return string The base64 encoded encrypted string.
     */
-    public static function encrypt($string, $salt=null) {
-        if($salt === null) {
-            $salt = Config::get('bantam_app_secret_key', null);
-            if($salt === null && !Session::hasBegun()) {
+    public static function encrypt($string, $key=null) {
+        if($key === null) {
+            $key = Config::get('bantam_app_secret_key', null);
+            if($key === null && !Session::hasBegun()) {
                 throw new \ErrorException(self::salt_error);
             }
 
             if(Session::hasBegun() && Session::valid()) {
-                $salt = Session::get('salt');
-                if($salt === null) {
-                    $salt = openssl_random_pseudo_bytes(self::salt_bytes_size);
-                    Session::set('salt', $salt);
+                $key = Session::get('salt');
+                if($key === null) {
+                    $key = openssl_random_pseudo_bytes(self::salt_bytes_size);
+                    Session::set('salt', $key);
                 }
             }
         }
 
-        // $salt = openssl_random_pseudo_bytes(self::salt_bytes_size);
+        // $key = openssl_random_pseudo_bytes(self::salt_bytes_size);
         $iv_size = mcrypt_get_iv_size(self::cipher_type, self::cipher_mode);
         $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
 
-        $encrypted_string = mcrypt_encrypt(self::cipher_type, $salt, $string, self::cipher_mode, $iv);
+        $encrypted_string = mcrypt_encrypt(self::cipher_type, $key, $string, self::cipher_mode, $iv);
         return base64_encode($iv.$encrypted_string);
     }
 
@@ -77,18 +77,18 @@ class Crypto {
     * @param string $string The string to decrypt.
     * @return string The base64 decoded decrypted string.
     */
-    public static function decrypt($string, $salt=null) {
-        if($salt === null) {
-            $salt = Config::get('bantam_app_secret_key', null);
-            if($salt === null && !Session::hasBegun()) {
+    public static function decrypt($string, $key=null) {
+        if($key === null) {
+            $key = Config::get('bantam_app_secret_key', null);
+            if($key === null && !Session::hasBegun()) {
                 throw new \ErrorException(self::salt_error);
             }
 
             if(Session::hasBegun() && Session::valid()) {
-                $salt = Session::get('salt');
-                if($salt === null) {
-                    $salt = openssl_random_pseudo_bytes(self::salt_bytes_size);
-                    Session::set('salt', $salt);
+                $key = Session::get('salt');
+                if($key === null) {
+                    $key = openssl_random_pseudo_bytes(self::salt_bytes_size);
+                    Session::set('salt', $key);
                 }
             }
         }
@@ -98,7 +98,7 @@ class Crypto {
         $iv = substr($raw_bytes, 0, $iv_size);
 
         $encrypted_string = substr($raw_bytes, $iv_size);
-        $string = mcrypt_decrypt(self::cipher_type, $salt, $encrypted_string, self::cipher_mode, $iv);
+        $string = mcrypt_decrypt(self::cipher_type, $key, $encrypted_string, self::cipher_mode, $iv);
         return $string;
     }
 
