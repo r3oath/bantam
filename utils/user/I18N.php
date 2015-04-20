@@ -132,7 +132,7 @@ class I18N {
     * Return a translation given the pack name and the token, example
     * r('users.login_notice').
     * @param string $pack_token The pack name and the token.
-    * @param array $replacements An associative array of key/values to replace in the localized string.
+    * @param array $replacements An array of values to replace in the localized string denoted by {0..n} placeholders.
     * @return string The translation or an empty string if not found.
     */
     public static function r($pack_token, $replacements=[]) {
@@ -143,8 +143,8 @@ class I18N {
             if(isset(static::$table[$pack][$token])) {
                 $string = static::$table[$pack][$token];
                 if(count($replacements) > 0) {
-                    foreach ($replacements as $key => $value) {
-                        $string = str_replace($key, $value, $string);
+                    for ($i = 0; $i < count($replacements); $i++) {
+                        $string = str_replace("{{$i}}", $replacements[$i], $string);
                     }
                     return $string;
                 } else {
