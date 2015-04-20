@@ -133,7 +133,7 @@
 				<a href="http://opensource.org/licenses/MIT">MIT License (MIT)</a><br>
 				<b>Author:</b>
 				Tristan Strathearn <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#114;&#x33;&#x6f;&#97;&#x74;&#x68;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#109;">&#114;&#x33;&#x6f;&#97;&#x74;&#x68;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#109;</a><br>
-			<b>Located at</b> <a href="source-class-App.Utils.Data.Crypto.html#32-193" title="Go to source code">data/Crypto.php</a>
+			<b>Located at</b> <a href="source-class-App.Utils.Data.Crypto.html#32-194" title="Go to source code">data/Crypto.php</a>
 		<br>
 	</div>
 
@@ -153,7 +153,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_encrypt">#</a>
-		<code><a href="source-class-App.Utils.Data.Crypto.html#45-73" title="Go to source code">encrypt</a>( <span>string <var>$string</var></span>, <span> <var>$key</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-App.Utils.Data.Crypto.html#46-74" title="Go to source code">encrypt</a>( <span>string <var>$string</var></span>, <span> <var>$key</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			<p>Encrypt a string and return the base64 encoded result. If the size
@@ -196,7 +196,7 @@ of the data is not n * blocksize, the data will be padded with '\0'.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_decrypt">#</a>
-		<code><a href="source-class-App.Utils.Data.Crypto.html#75-103" title="Go to source code">decrypt</a>( <span>string <var>$string</var></span>, <span> <var>$key</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-App.Utils.Data.Crypto.html#76-104" title="Go to source code">decrypt</a>( <span>string <var>$string</var></span>, <span> <var>$key</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			<p>Decrypt a string and return the plaintext result.</p>
@@ -237,7 +237,7 @@ of the data is not n * blocksize, the data will be padded with '\0'.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_sign">#</a>
-		<code><a href="source-class-App.Utils.Data.Crypto.html#105-130" title="Go to source code">sign</a>( <span>string <var>$string</var></span> )</code>
+		<code><a href="source-class-App.Utils.Data.Crypto.html#106-131" title="Go to source code">sign</a>( <span>string <var>$string</var></span> )</code>
 
 		<div class="description short">
 			<p>Sign the given string and return the same string with the signature
@@ -284,7 +284,7 @@ conditions are met, an ErrorException will be thrown.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_verifySignature">#</a>
-		<code><a href="source-class-App.Utils.Data.Crypto.html#132-152" title="Go to source code">verifySignature</a>( <span>string <var>$string</var></span> )</code>
+		<code><a href="source-class-App.Utils.Data.Crypto.html#133-153" title="Go to source code">verifySignature</a>( <span>string <var>$string</var></span> )</code>
 
 		<div class="description short">
 			<p>Verify a string and signature produced by the sign function. Will return
@@ -327,7 +327,7 @@ will return false otherwise.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_stripSignature">#</a>
-		<code><a href="source-class-App.Utils.Data.Crypto.html#154-168" title="Go to source code">stripSignature</a>( <span>string <var>$string</var></span> )</code>
+		<code><a href="source-class-App.Utils.Data.Crypto.html#155-169" title="Go to source code">stripSignature</a>( <span>string <var>$string</var></span> )</code>
 
 		<div class="description short">
 			<p>Strip the signature from a string, useful when the signature has been
@@ -368,7 +368,7 @@ verified and you want to work with just the original string.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_hash">#</a>
-		<code><a href="source-class-App.Utils.Data.Crypto.html#170-182" title="Go to source code">hash</a>( <span>string <var>$string</var></span> )</code>
+		<code><a href="source-class-App.Utils.Data.Crypto.html#171-183" title="Go to source code">hash</a>( <span>string <var>$string</var></span> )</code>
 
 		<div class="description short">
 			<p>Hash the given string using the BCRYPT password algorithm. If you have set
@@ -411,7 +411,7 @@ don't annoy your legit users! (the default, 10, is usually good enough.)</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_verifyHash">#</a>
-		<code><a href="source-class-App.Utils.Data.Crypto.html#184-192" title="Go to source code">verifyHash</a>( <span>string <var>$plain</var></span>, <span>string <var>$hash</var></span> )</code>
+		<code><a href="source-class-App.Utils.Data.Crypto.html#185-193" title="Go to source code">verifyHash</a>( <span>string <var>$plain</var></span>, <span>string <var>$hash</var></span> )</code>
 
 		<div class="description short">
 			<p>Verify a hashed string produced by the hash function.</p>
@@ -499,12 +499,12 @@ don't annoy your legit users! (the default, 10, is usually good enough.)</p>
 			</div>
 		</td>
 	</tr>
-	<tr data-order="salt_bytes_size" id="salt_bytes_size">
+	<tr data-order="key_bytes_size" id="key_bytes_size">
 
 		<td class="attributes"><code>integer</code></td>
 		<td class="name">
 			<code>
-				<a href="source-class-App.Utils.Data.Crypto.html#41" title="Go to source code"><b>salt_bytes_size</b></a>
+				<a href="source-class-App.Utils.Data.Crypto.html#41" title="Go to source code"><b>key_bytes_size</b></a>
 			</code>
 
 			<div class="description short">
@@ -518,7 +518,7 @@ don't annoy your legit users! (the default, 10, is usually good enough.)</p>
 		</td>
 		<td class="value">
 			<div>
-				<a href="#salt_bytes_size" class="anchor">#</a>
+				<a href="#key_bytes_size" class="anchor">#</a>
 				<code><span class="php-num">32</span></code>
 			</div>
 		</td>
@@ -547,12 +547,36 @@ don't annoy your legit users! (the default, 10, is usually good enough.)</p>
 			</div>
 		</td>
 	</tr>
+	<tr data-order="key_error" id="key_error">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-App.Utils.Data.Crypto.html#43" title="Go to source code"><b>key_error</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#key_error" class="anchor">#</a>
+				<code><span class="php-quote">'Key required, pass one in as an argument, start a session or set \'bantam_app_secret_key\' in your Config.'</span></code>
+			</div>
+		</td>
+	</tr>
 	<tr data-order="salt_error" id="salt_error">
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name">
 			<code>
-				<a href="source-class-App.Utils.Data.Crypto.html#43" title="Go to source code"><b>salt_error</b></a>
+				<a href="source-class-App.Utils.Data.Crypto.html#44" title="Go to source code"><b>salt_error</b></a>
 			</code>
 
 			<div class="description short">
@@ -567,7 +591,7 @@ don't annoy your legit users! (the default, 10, is usually good enough.)</p>
 		<td class="value">
 			<div>
 				<a href="#salt_error" class="anchor">#</a>
-				<code><span class="php-quote">'Salt required, please pass it in, start a session or set \'bantam_app_secret_key\' to a secure value in Config.'</span></code>
+				<code><span class="php-quote">'Salt required, start a session or set \'bantam_app_secret_key\' in your Config.'</span></code>
 			</div>
 		</td>
 	</tr>
