@@ -25,12 +25,56 @@
 // Don't squawk.
 !defined('BANTAM') ? exit() : null;
 
+use \Closure;
+
 /**
-* Description.
+* Allows the system to pass data to a set of registered filter callbacks that
+* will optionally modify and return that data back to the system. An example would
+* be when creating a user, passing the username to a filter which will add some
+* uniqueness to the name, or prepending it with a company name etc.
 * @package App\Utils\Data
 * @author Tristan Strathearn <r3oath@gmail.com>
 * @license http://opensource.org/licenses/MIT MIT License (MIT)
 */
 class Filters {
-    // Coming soon.
+    /**
+    * @var array An array of filter names and respective callback functions.
+    */
+    private static $filters;
+
+    /**
+    * Registers a new filer and callback function.
+    * @param string $name The name of the filter.
+    * @param mixed $closure The callback function to associate with this filter.
+    * @return void.
+    */
+    public static function register($name, $closure) {
+        if(!isset(static::$filters[$name])) {
+            static::$filters[$name] = array();
+        }
+
+        static::$filters[$name][] = $closure;
+    }
+
+    /**
+    * Runs the specified filter, returning the (possibly) mutated data provided.
+    * @param string $name The name of the filter to run.
+    * @param mixed $data The data to pass to all the registered callback functions.
+    * @return mixed The (possibly) mutated data.
+    */
+    public static function run($name, $data) {
+        if(!isset(static::$filters[$name])) {
+            return;
+        }
+
+        foreach (static::$filters[$name] as $key => $value) {
+            if($value instanceOf Closure) {
+                $data = $value($data);
+            } else if(is_callable($value)) {
+                $data = call_user_func($value, $data);
+            }
+        }
+
+        return $data;
+    }
 }
