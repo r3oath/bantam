@@ -10,7 +10,8 @@ return array(
     // Bantam internal configuration settings.
 
     'bantam_session_max_idle_time' => Sundial::now()->minutes(10)->raw()->time(),
-    'bantam_app_secret_key'        => '11111111112222222222333333333344',
+    // Change your secret key to something unique and secure.
+    'bantam_app_secret_key'        => 'Change me!',
     'bantam_bcrypt_cost'           => 10,
     'bantam_default_locale'        => 'en',
 );
