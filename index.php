@@ -6,7 +6,6 @@ require('Autoload.php');
 // Load in our class requirements for this page.
 use App\Utils\Data\Assets;
 use App\Utils\Misc\Config;
-use App\Utils\Misc\Sundial;
 use App\Utils\User\I18N;
 
 // Load our config file.
@@ -19,7 +18,7 @@ I18N::locale('en');
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo I18N::getLocale(); ?>">
 <head>
     <!-- Site information. -->
     <meta charset="UTF-8">
@@ -96,11 +95,11 @@ I18N::locale('en');
 <body>
     <div class="container">
         <div class="content">
-            <!-- Internationalized strings. -->
+            <!-- Using internationalized strings. -->
             <p class="title"><?php I18N::e('bantam.welcome'); ?></p>
 
-            <!-- Decrypting our tagline! -->
-            <p class="quote"><?php I18N::e('bantam.quote', ['{1}' => 'framework']); ?></p>
+            <!-- Replacing a variable in an I18N string. -->
+            <p class="quote"><?php I18N::e('bantam.quote', ['framework']); ?></p>
 
             <!-- The good ol' documentation. -->
             <p><a href="docs/index.html"><i class="fa fa-book"></i> <?php I18N::e('bantam.docs'); ?></a></p>
