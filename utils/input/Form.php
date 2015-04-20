@@ -28,6 +28,7 @@
 use \App\Utils\Http\Request;
 use \App\Utils\Http\Csrf;
 use \App\Utils\User\Session;
+use \App\Utils\Data\Prelims;
 
 /**
 * Generates HTML forms.
@@ -179,47 +180,30 @@ class Form {
     * @param string $name The name of the field to look for.
     * @return bool True if field was found (form submitted), false otherwise.
     */
-    public static function wasSubmitted($name) {
-        $param = null;
-
-        if(Request::isGet()) {
-            $param = Request::allowedGetParams([$name]);
-            $param = $param[$name];
-        }
-
-        if(Request::isPost()) {
-            $param = Request::allowedPostParams([$name]);
-            $param = $param[$name];
-        }
-
+    public static function submitted($name='submit') {
+        $params = Request::allowedParams([$name]);
+        $param = isset($params[$name]) ? $params[$name] : null;
         return $param !== null;
     }
 
     /**
     * Checks to see if the CSRF token specified in the form matches the one
     * stored in the users session, assuming a session has been started.
-    * This in turn obviously only provides CSRF attacks if you've started a session
-    * otherwise we cannot check the token against one stored on the server.
     * @return True if no session started or CSRF tokens match, false otherwise.
     * @return void
     */
-    public static function checkCsrf() {
+    public static function verifyCsrf() {
         if(Session::hasBegun()) {
-            if(!Session::isValid()) {
+            if(!Session::valid()) {
                 return false;
             }
 
-            $csrf_token = null;
-
-            if(Request::isGet()) {
-                $csrf_token = Request::allowedGetParams(['csrf_token']);
-                $csrf_token = $csrf_token['csrf_token'];
+            $params = Request::allowedParams(['csrf_token']);
+            if(Prelims::hasNulls($params)) {
+                return false;
             }
 
-            if(Request::isPost()) {
-                $csrf_token = Request::allowedPostParams(['csrf_token']);
-                $csrf_token = $csrf_token['csrf_token'];
-            }
+            $csrf_token = isset($params['csrf_token']) ? $params['csrf_token'] : null;
 
             // At this point, if true, we have a csrf_token and it matches
             // the one stored in the users session.
@@ -239,16 +223,7 @@ class Form {
     * @return mixed The value of the field or null if not found.
     */
     public static function flash($name) {
-        if(Request::isGet()) {
-            $param = Request::allowedGetParams([$name]);
-            return $param[$name];
-        }
-
-        if(Request::isPost()) {
-            $param = Request::allowedPostParams([$name]);
-            return $param[$name];
-        }
-
-        return null;
+        $param = Request::allowedParams([$name]);
+        return isset($param[$name]) ? $param[$name] : null;
     }
 }
