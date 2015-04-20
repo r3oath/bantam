@@ -127,13 +127,13 @@
 		
 		
 		<b>Namespace:</b> <a href="namespace-App.html">App</a>\<a href="namespace-App.Utils.html">Utils</a>\<a href="namespace-App.Utils.User.html">User</a><br>
-		<b>Package:</b> User<br>
+		<b>Package:</b> App\Utils\User<br>
 
 				<b>License:</b>
 				<a href="http://opensource.org/licenses/MIT">MIT License (MIT)</a><br>
 				<b>Author:</b>
 				Tristan Strathearn <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#114;&#x33;&#x6f;&#97;&#x74;&#x68;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#109;">&#114;&#x33;&#x6f;&#97;&#x74;&#x68;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#109;</a><br>
-			<b>Located at</b> <a href="source-class-App.Utils.User.I18N.html#31-138" title="Go to source code">user/I18N.php</a>
+			<b>Located at</b> <a href="source-class-App.Utils.User.I18N.html#31-158" title="Go to source code">user/I18N.php</a>
 		<br>
 	</div>
 
@@ -153,7 +153,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_load">#</a>
-		<code><a href="source-class-App.Utils.User.I18N.html#42-50" title="Go to source code">load</a>( <span>array <var>$files</var></span> )</code>
+		<code><a href="source-class-App.Utils.User.I18N.html#53-61" title="Go to source code">load</a>( <span>array <var>$files</var></span> )</code>
 
 		<div class="description short">
 			<p>Load an associative array of locales and file locations. For example,
@@ -194,7 +194,7 @@ load(['en_au' = > 'en_au.php', 'en_us' => 'en_us.php'])</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_folder">#</a>
-		<code><a href="source-class-App.Utils.User.I18N.html#52-81" title="Go to source code">folder</a>( <span>string <var>$folder</var></span> )</code>
+		<code><a href="source-class-App.Utils.User.I18N.html#63-92" title="Go to source code">folder</a>( <span>string <var>$folder</var></span> )</code>
 
 		<div class="description short">
 			<p>Load in locales from the specified folder. Locale names will be parsed from
@@ -237,7 +237,7 @@ be registered as the locale 'en_us'.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_locale">#</a>
-		<code><a href="source-class-App.Utils.User.I18N.html#83-100" title="Go to source code">locale</a>( <span>string <var>$name</var></span> )</code>
+		<code><a href="source-class-App.Utils.User.I18N.html#94-111" title="Go to source code">locale</a>( <span>string <var>$name</var></span> )</code>
 
 		<div class="description short">
 			<p>Set the current locale to the specified type and load the translations,
@@ -278,7 +278,7 @@ if not found, load the default from Config, if neither found, returns false.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getLocale">#</a>
-		<code><a href="source-class-App.Utils.User.I18N.html#102-108" title="Go to source code">getLocale</a>( )</code>
+		<code><a href="source-class-App.Utils.User.I18N.html#113-119" title="Go to source code">getLocale</a>( )</code>
 
 		<div class="description short">
 			<p>Gets the currently set locale.</p>
@@ -312,7 +312,7 @@ if not found, load the default from Config, if neither found, returns false.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_e">#</a>
-		<code><a href="source-class-App.Utils.User.I18N.html#110-118" title="Go to source code">e</a>( <span>string <var>$pack_token</var></span> )</code>
+		<code><a href="source-class-App.Utils.User.I18N.html#121-129" title="Go to source code">e</a>( <span>string <var>$pack_token</var></span>, <span> <var>$replacements</var> = []</span> )</code>
 
 		<div class="description short">
 			<p>Echo a translation out to the page given the pack name and the token, example
@@ -328,6 +328,8 @@ e('users', 'login_notice').</p>
 				<div class="list"><dl>
 					<dt><var>$pack_token</var></dt>
 					<dd>The pack name and the token.</dd>
+					<dt><var>$replacements</var></dt>
+					<dd></dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -353,7 +355,7 @@ e('users', 'login_notice').</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_r">#</a>
-		<code><a href="source-class-App.Utils.User.I18N.html#120-137" title="Go to source code">r</a>( <span>string <var>$pack_token</var></span> )</code>
+		<code><a href="source-class-App.Utils.User.I18N.html#131-157" title="Go to source code">r</a>( <span>string <var>$pack_token</var></span>, <span>array <var>$replacements</var> = []</span> )</code>
 
 		<div class="description short">
 			<p>Return a translation given the pack name and the token, example
@@ -369,6 +371,8 @@ r('users.login_notice').</p>
 				<div class="list"><dl>
 					<dt><var>$pack_token</var></dt>
 					<dd>The pack name and the token.</dd>
+					<dt><var>$replacements</var></dt>
+					<dd>An associative array of key/values to replace in the localized string.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>

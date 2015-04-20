@@ -74,7 +74,7 @@
 				<li><a href="class-App.Utils.Http.Csrf.html">App\Utils\Http\Csrf</a></li>
 				<li><a href="class-App.Utils.Http.Request.html">App\Utils\Http\Request</a></li>
 				<li><a href="class-App.Utils.Http.Route.html">App\Utils\Http\Route</a></li>
-				<li><a href="class-App.Utils.Input.Forms.html">App\Utils\Input\Forms</a></li>
+				<li><a href="class-App.Utils.Input.Form.html">App\Utils\Input\Form</a></li>
 				<li><a href="class-App.Utils.Input.Validate.html">App\Utils\Input\Validate</a></li>
 				<li><a href="class-App.Utils.Misc.Config.html">App\Utils\Misc\Config</a></li>
 				<li><a href="class-App.Utils.Misc.Events.html">App\Utils\Misc\Events</a></li>
@@ -159,7 +159,7 @@
 </span></span><span id="37" class="l"><a href="#37"> 37: </a><span class="php-comment">* // Will return the value of 5 as value is below min.
 </span></span><span id="38" class="l"><a href="#38"> 38: </a><span class="php-comment">* Prelims::clamp(3, 5, 10);
 </span></span><span id="39" class="l"><a href="#39"> 39: </a><span class="php-comment">* &lt;/code&gt;
-</span></span><span id="40" class="l"><a href="#40"> 40: </a><span class="php-comment">* @package Data
+</span></span><span id="40" class="l"><a href="#40"> 40: </a><span class="php-comment">* @package App\Utils\Data
 </span></span><span id="41" class="l"><a href="#41"> 41: </a><span class="php-comment">* @author Tristan Strathearn &lt;r3oath@gmail.com&gt;
 </span></span><span id="42" class="l"><a href="#42"> 42: </a><span class="php-comment">* @license http://opensource.org/licenses/MIT MIT License (MIT)
 </span></span><span id="43" class="l"><a href="#43"> 43: </a><span class="php-comment">*/</span>
@@ -241,8 +241,28 @@
 </span><span id="119" class="l"><a href="#119">119: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">static</span> <span class="php-keyword1">function</span> clamp(<span class="php-var">$value</span>, <span class="php-var">$min</span>, <span class="php-var">$max</span>) {
 </span><span id="120" class="l"><a href="#120">120: </a>        <span class="php-keyword1">return</span> (<span class="php-var">$value</span> &gt; <span class="php-var">$max</span>) ? <span class="php-var">$max</span> : (<span class="php-var">$value</span> &lt; <span class="php-var">$min</span>) ? <span class="php-var">$min</span> : <span class="php-var">$value</span>;
 </span><span id="121" class="l"><a href="#121">121: </a>    }
-</span><span id="122" class="l"><a href="#122">122: </a>}
-</span><span id="123" class="l"><a href="#123">123: </a></span></code></pre>
+</span><span id="122" class="l"><a href="#122">122: </a>
+</span><span id="123" class="l"><a href="#123">123: </a>    <span class="php-comment">/**
+</span></span><span id="124" class="l"><a href="#124">124: </a><span class="php-comment">    * Check whether the specified string starts with the given substring.
+</span></span><span id="125" class="l"><a href="#125">125: </a><span class="php-comment">    * @param string $string The string to check.
+</span></span><span id="126" class="l"><a href="#126">126: </a><span class="php-comment">    * @param string $needle The needle to look for.
+</span></span><span id="127" class="l"><a href="#127">127: </a><span class="php-comment">    * @return bool True if string starts with substring, false otherwise.
+</span></span><span id="128" class="l"><a href="#128">128: </a><span class="php-comment">    */</span>
+</span><span id="129" class="l"><a href="#129">129: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">static</span> <span class="php-keyword1">function</span> startsWith(<span class="php-var">$string</span>, <span class="php-var">$needle</span>) {
+</span><span id="130" class="l"><a href="#130">130: </a>        <span class="php-keyword1">return</span> <span class="php-keyword2">substr</span>(<span class="php-var">$string</span>, <span class="php-num">0</span>, <span class="php-keyword2">strlen</span>(<span class="php-var">$needle</span>)) === <span class="php-var">$needle</span>;
+</span><span id="131" class="l"><a href="#131">131: </a>    }
+</span><span id="132" class="l"><a href="#132">132: </a>
+</span><span id="133" class="l"><a href="#133">133: </a>    <span class="php-comment">/**
+</span></span><span id="134" class="l"><a href="#134">134: </a><span class="php-comment">    * Check whether the specified string ends with the given substring.
+</span></span><span id="135" class="l"><a href="#135">135: </a><span class="php-comment">    * @param string $string The string to check.
+</span></span><span id="136" class="l"><a href="#136">136: </a><span class="php-comment">    * @param string $needle The needle to look for.
+</span></span><span id="137" class="l"><a href="#137">137: </a><span class="php-comment">    * @return bool True if string ends with substring, false otherwise.
+</span></span><span id="138" class="l"><a href="#138">138: </a><span class="php-comment">    */</span>
+</span><span id="139" class="l"><a href="#139">139: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">static</span> <span class="php-keyword1">function</span> endsWith(<span class="php-var">$string</span>, <span class="php-var">$needle</span>) {
+</span><span id="140" class="l"><a href="#140">140: </a>        <span class="php-keyword1">return</span> <span class="php-keyword2">substr</span>(<span class="php-var">$string</span>, -<span class="php-keyword2">strlen</span>(<span class="php-var">$needle</span>)) === <span class="php-var">$needle</span>;
+</span><span id="141" class="l"><a href="#141">141: </a>    }
+</span><span id="142" class="l"><a href="#142">142: </a>}
+</span><span id="143" class="l"><a href="#143">143: </a></span></code></pre>
 
 	<div id="footer">
 		Bantam API documentation generated by <a href="http://apigen.org">ApiGen</a>
@@ -250,6 +270,6 @@
 </div>
 </div>
 <script src="resources/combined.js?ba22eb73e2228cf49e019479eca48c9c712611a8"></script>
-<script src="elementlist.js?1a971b1140acecb106e770bf3f3d2ffc40f6c74b"></script>
+<script src="elementlist.js?a9271aa788110d1eabaf8f721ef91a023fa893fc"></script>
 </body>
 </html>

@@ -142,13 +142,13 @@ Sundial::now()-&gt;months(<span class="php-num">3</span>)-&gt;raw()-&gt;<span cl
 		
 		
 		<b>Namespace:</b> <a href="namespace-App.html">App</a>\<a href="namespace-App.Utils.html">Utils</a>\<a href="namespace-App.Utils.Misc.html">Misc</a><br>
-		<b>Package:</b> Misc<br>
+		<b>Package:</b> App\Utils\Misc<br>
 
 				<b>License:</b>
 				<a href="http://opensource.org/licenses/MIT">MIT License (MIT)</a><br>
 				<b>Author:</b>
 				Tristan Strathearn <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#114;&#x33;&#x6f;&#97;&#x74;&#x68;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#109;">&#114;&#x33;&#x6f;&#97;&#x74;&#x68;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#109;</a><br>
-			<b>Located at</b> <a href="source-class-App.Utils.Misc.Sundial.html#28-236" title="Go to source code">misc/Sundial.php</a>
+			<b>Located at</b> <a href="source-class-App.Utils.Misc.Sundial.html#28-243" title="Go to source code">misc/Sundial.php</a>
 		<br>
 	</div>
 
@@ -168,7 +168,7 @@ Sundial::now()-&gt;months(<span class="php-num">3</span>)-&gt;raw()-&gt;<span cl
 
 		<td class="name"><div>
 		<a class="anchor" href="#_now">#</a>
-		<code><a href="source-class-App.Utils.Misc.Sundial.html#71-79" title="Go to source code">now</a>( <span>boolean <var>$chainable</var> = <span class="php-keyword1">true</span></span> )</code>
+		<code><a href="source-class-App.Utils.Misc.Sundial.html#78-86" title="Go to source code">now</a>( <span>boolean <var>$chainable</var> = <span class="php-keyword1">true</span></span> )</code>
 
 		<div class="description short">
 			<p>Returns a new instance of Sundial, unless $chainable is set to false,
@@ -209,7 +209,7 @@ in which case it will return the default value returned from time().</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_time">#</a>
-		<code><a href="source-class-App.Utils.Misc.Sundial.html#81-87" title="Go to source code">time</a>( )</code>
+		<code><a href="source-class-App.Utils.Misc.Sundial.html#88-94" title="Go to source code">time</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the current calculated time.</p>
@@ -243,7 +243,7 @@ in which case it will return the default value returned from time().</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_raw">#</a>
-		<code><a href="source-class-App.Utils.Misc.Sundial.html#89-98" title="Go to source code">raw</a>( )</code>
+		<code><a href="source-class-App.Utils.Misc.Sundial.html#96-105" title="Go to source code">raw</a>( )</code>
 
 		<div class="description short">
 			<p>Takes the current caclulated time and subtracts the time when the class was
@@ -281,7 +281,7 @@ etc is in the equivalent seconds using time() afterwards.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_date">#</a>
-		<code><a href="source-class-App.Utils.Misc.Sundial.html#100-134" title="Go to source code">date</a>( <span>array <var>$options</var> = []</span> )</code>
+		<code><a href="source-class-App.Utils.Misc.Sundial.html#107-141" title="Go to source code">date</a>( <span>array <var>$options</var> = []</span> )</code>
 
 		<div class="description short">
 			<p>Return the calculated time in a specific date format. You can pass in array
@@ -328,7 +328,7 @@ pairs. Example: ['ATOM', 'RFC822', 'CustomDate' => 'F Y'].</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_compare">#</a>
-		<code><a href="source-class-App.Utils.Misc.Sundial.html#136-160" title="Go to source code">compare</a>( <span>mixed <var>$other</var></span>, <span>integer <var>$type</var></span> )</code>
+		<code><a href="source-class-App.Utils.Misc.Sundial.html#143-167" title="Go to source code">compare</a>( <span>mixed <var>$other</var></span>, <span>integer <var>$type</var></span> )</code>
 
 		<div class="description short">
 			<p>Compare this Sundials calculated time against another Sundial instance
@@ -373,7 +373,7 @@ TIME_EQUAL.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_difference">#</a>
-		<code><a href="source-class-App.Utils.Misc.Sundial.html#162-171" title="Go to source code">difference</a>( <span>mixed <var>$other</var></span> )</code>
+		<code><a href="source-class-App.Utils.Misc.Sundial.html#169-178" title="Go to source code">difference</a>( <span>mixed <var>$other</var></span> )</code>
 
 		<div class="description short">
 			<p>Get the difference in seconds between this Sundial's calculated time and
@@ -414,7 +414,7 @@ another Sundial's or time value. The value returned is absolute.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_seconds">#</a>
-		<code><a href="source-class-App.Utils.Misc.Sundial.html#173-181" title="Go to source code">seconds</a>( <span>integer <var>$delta</var></span> )</code>
+		<code><a href="source-class-App.Utils.Misc.Sundial.html#180-188" title="Go to source code">seconds</a>( <span>integer <var>$delta</var></span> )</code>
 
 		<div class="description short">
 			<p>Add $delta seconds to the current calculated time.</p>
@@ -453,7 +453,7 @@ another Sundial's or time value. The value returned is absolute.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_minutes">#</a>
-		<code><a href="source-class-App.Utils.Misc.Sundial.html#183-190" title="Go to source code">minutes</a>( <span>integer <var>$delta</var></span> )</code>
+		<code><a href="source-class-App.Utils.Misc.Sundial.html#190-197" title="Go to source code">minutes</a>( <span>integer <var>$delta</var></span> )</code>
 
 		<div class="description short">
 			<p>Add $delta minutes to the current calculated time.</p>
@@ -492,7 +492,7 @@ another Sundial's or time value. The value returned is absolute.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_hours">#</a>
-		<code><a href="source-class-App.Utils.Misc.Sundial.html#192-199" title="Go to source code">hours</a>( <span>integer <var>$delta</var></span> )</code>
+		<code><a href="source-class-App.Utils.Misc.Sundial.html#199-206" title="Go to source code">hours</a>( <span>integer <var>$delta</var></span> )</code>
 
 		<div class="description short">
 			<p>Add $delta hours to the current calculated time.</p>
@@ -531,7 +531,7 @@ another Sundial's or time value. The value returned is absolute.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_days">#</a>
-		<code><a href="source-class-App.Utils.Misc.Sundial.html#201-208" title="Go to source code">days</a>( <span>integer <var>$delta</var></span> )</code>
+		<code><a href="source-class-App.Utils.Misc.Sundial.html#208-215" title="Go to source code">days</a>( <span>integer <var>$delta</var></span> )</code>
 
 		<div class="description short">
 			<p>Add $delta days to the current calculated time.</p>
@@ -570,7 +570,7 @@ another Sundial's or time value. The value returned is absolute.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_weeks">#</a>
-		<code><a href="source-class-App.Utils.Misc.Sundial.html#210-217" title="Go to source code">weeks</a>( <span>integer <var>$delta</var></span> )</code>
+		<code><a href="source-class-App.Utils.Misc.Sundial.html#217-224" title="Go to source code">weeks</a>( <span>integer <var>$delta</var></span> )</code>
 
 		<div class="description short">
 			<p>Add $delta weeks to the current calculated time.</p>
@@ -609,7 +609,7 @@ another Sundial's or time value. The value returned is absolute.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_months">#</a>
-		<code><a href="source-class-App.Utils.Misc.Sundial.html#219-226" title="Go to source code">months</a>( <span>integer <var>$delta</var></span> )</code>
+		<code><a href="source-class-App.Utils.Misc.Sundial.html#226-233" title="Go to source code">months</a>( <span>integer <var>$delta</var></span> )</code>
 
 		<div class="description short">
 			<p>Add $delta months to the current calculated time.</p>
@@ -648,7 +648,7 @@ another Sundial's or time value. The value returned is absolute.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_years">#</a>
-		<code><a href="source-class-App.Utils.Misc.Sundial.html#228-235" title="Go to source code">years</a>( <span>integer <var>$delta</var></span> )</code>
+		<code><a href="source-class-App.Utils.Misc.Sundial.html#235-242" title="Go to source code">years</a>( <span>integer <var>$delta</var></span> )</code>
 
 		<div class="description short">
 			<p>Add $delta years to the current calculated time.</p>
@@ -691,7 +691,7 @@ another Sundial's or time value. The value returned is absolute.</p>
 		<td class="attributes"><code>integer</code></td>
 		<td class="name">
 			<code>
-				<a href="source-class-App.Utils.Misc.Sundial.html#56" title="Go to source code"><b>TIME_GREATER</b></a>
+				<a href="source-class-App.Utils.Misc.Sundial.html#63" title="Go to source code"><b>TIME_GREATER</b></a>
 			</code>
 
 			<div class="description short">
@@ -715,7 +715,7 @@ another Sundial's or time value. The value returned is absolute.</p>
 		<td class="attributes"><code>integer</code></td>
 		<td class="name">
 			<code>
-				<a href="source-class-App.Utils.Misc.Sundial.html#57" title="Go to source code"><b>TIME_LESS</b></a>
+				<a href="source-class-App.Utils.Misc.Sundial.html#64" title="Go to source code"><b>TIME_LESS</b></a>
 			</code>
 
 			<div class="description short">
@@ -739,7 +739,7 @@ another Sundial's or time value. The value returned is absolute.</p>
 		<td class="attributes"><code>integer</code></td>
 		<td class="name">
 			<code>
-				<a href="source-class-App.Utils.Misc.Sundial.html#58" title="Go to source code"><b>TIME_EQUAL</b></a>
+				<a href="source-class-App.Utils.Misc.Sundial.html#65" title="Go to source code"><b>TIME_EQUAL</b></a>
 			</code>
 
 			<div class="description short">

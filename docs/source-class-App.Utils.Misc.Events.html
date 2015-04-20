@@ -74,7 +74,7 @@
 				<li><a href="class-App.Utils.Http.Csrf.html">App\Utils\Http\Csrf</a></li>
 				<li><a href="class-App.Utils.Http.Request.html">App\Utils\Http\Request</a></li>
 				<li><a href="class-App.Utils.Http.Route.html">App\Utils\Http\Route</a></li>
-				<li><a href="class-App.Utils.Input.Forms.html">App\Utils\Input\Forms</a></li>
+				<li><a href="class-App.Utils.Input.Form.html">App\Utils\Input\Form</a></li>
 				<li><a href="class-App.Utils.Input.Validate.html">App\Utils\Input\Validate</a></li>
 				<li><a href="class-App.Utils.Misc.Config.html">App\Utils\Misc\Config</a></li>
 				<li><a href="class-App.Utils.Misc.Events.html">App\Utils\Misc\Events</a></li>
@@ -163,82 +163,85 @@
 </span></span><span id="41" class="l"><a href="#41"> 41: </a><span class="php-comment">* // arguments to all the registered functions for this particular event.
 </span></span><span id="42" class="l"><a href="#42"> 42: </a><span class="php-comment">* Events::fire('user_registered', 'Bob123');
 </span></span><span id="43" class="l"><a href="#43"> 43: </a><span class="php-comment">* &lt;/code&gt;
-</span></span><span id="44" class="l"><a href="#44"> 44: </a><span class="php-comment">* @package Misc
+</span></span><span id="44" class="l"><a href="#44"> 44: </a><span class="php-comment">* @package App\Utils\Misc
 </span></span><span id="45" class="l"><a href="#45"> 45: </a><span class="php-comment">* @author Tristan Strathearn &lt;r3oath@gmail.com&gt;
 </span></span><span id="46" class="l"><a href="#46"> 46: </a><span class="php-comment">* @license http://opensource.org/licenses/MIT MIT License (MIT)
 </span></span><span id="47" class="l"><a href="#47"> 47: </a><span class="php-comment">*/</span>
 </span><span id="48" class="l"><a href="#48"> 48: </a><span class="php-keyword1">class</span> Events {
-</span><span id="49" class="l"><a href="#49"> 49: </a>    <span class="php-keyword1">private</span> <span class="php-keyword1">static</span> <span class="php-var">$events</span> = <span class="php-keyword1">array</span>();
-</span><span id="50" class="l"><a href="#50"> 50: </a>
-</span><span id="51" class="l"><a href="#51"> 51: </a>    <span class="php-comment">/**
-</span></span><span id="52" class="l"><a href="#52"> 52: </a><span class="php-comment">    * Registers a new event and a corresponding callback function. The callback
-</span></span><span id="53" class="l"><a href="#53"> 53: </a><span class="php-comment">    * can either be passed in as a Closure or as a function string.
-</span></span><span id="54" class="l"><a href="#54"> 54: </a><span class="php-comment">    * @param string $name The name of the event to register.
-</span></span><span id="55" class="l"><a href="#55"> 55: </a><span class="php-comment">    * @param mixed $closure The Closure or user function to call on this event.
-</span></span><span id="56" class="l"><a href="#56"> 56: </a><span class="php-comment">    * @return void
-</span></span><span id="57" class="l"><a href="#57"> 57: </a><span class="php-comment">    */</span>
-</span><span id="58" class="l"><a href="#58"> 58: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">static</span> <span class="php-keyword1">function</span> register(<span class="php-var">$name</span>, <span class="php-var">$closure</span>) {
-</span><span id="59" class="l"><a href="#59"> 59: </a>        <span class="php-keyword1">if</span>(!<span class="php-keyword1">isset</span>(<span class="php-keyword1">static</span>::<span class="php-var">$events</span>[<span class="php-var">$name</span>])) {
-</span><span id="60" class="l"><a href="#60"> 60: </a>            <span class="php-keyword1">static</span>::<span class="php-var">$events</span>[<span class="php-var">$name</span>] = <span class="php-keyword1">array</span>(<span class="php-var">$closure</span>);
-</span><span id="61" class="l"><a href="#61"> 61: </a>            <span class="php-keyword1">return</span>;
-</span><span id="62" class="l"><a href="#62"> 62: </a>        }
-</span><span id="63" class="l"><a href="#63"> 63: </a>
-</span><span id="64" class="l"><a href="#64"> 64: </a>        <span class="php-keyword1">static</span>::<span class="php-var">$events</span>[<span class="php-var">$name</span>][] = <span class="php-var">$closure</span>;
-</span><span id="65" class="l"><a href="#65"> 65: </a>    }
+</span><span id="49" class="l"><a href="#49"> 49: </a>    <span class="php-comment">/**
+</span></span><span id="50" class="l"><a href="#50"> 50: </a><span class="php-comment">    * @var array An array of event names and respective regsitered callback functions.
+</span></span><span id="51" class="l"><a href="#51"> 51: </a><span class="php-comment">    */</span>
+</span><span id="52" class="l"><a href="#52"> 52: </a>    <span class="php-keyword1">private</span> <span class="php-keyword1">static</span> <span class="php-var">$events</span> = <span class="php-keyword1">array</span>();
+</span><span id="53" class="l"><a href="#53"> 53: </a>
+</span><span id="54" class="l"><a href="#54"> 54: </a>    <span class="php-comment">/**
+</span></span><span id="55" class="l"><a href="#55"> 55: </a><span class="php-comment">    * Registers a new event and a corresponding callback function. The callback
+</span></span><span id="56" class="l"><a href="#56"> 56: </a><span class="php-comment">    * can either be passed in as a Closure or as a function string.
+</span></span><span id="57" class="l"><a href="#57"> 57: </a><span class="php-comment">    * @param string $name The name of the event to register.
+</span></span><span id="58" class="l"><a href="#58"> 58: </a><span class="php-comment">    * @param mixed $closure The Closure or user function to call on this event.
+</span></span><span id="59" class="l"><a href="#59"> 59: </a><span class="php-comment">    * @return void
+</span></span><span id="60" class="l"><a href="#60"> 60: </a><span class="php-comment">    */</span>
+</span><span id="61" class="l"><a href="#61"> 61: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">static</span> <span class="php-keyword1">function</span> register(<span class="php-var">$name</span>, <span class="php-var">$closure</span>) {
+</span><span id="62" class="l"><a href="#62"> 62: </a>        <span class="php-keyword1">if</span>(!<span class="php-keyword1">isset</span>(<span class="php-keyword1">static</span>::<span class="php-var">$events</span>[<span class="php-var">$name</span>])) {
+</span><span id="63" class="l"><a href="#63"> 63: </a>            <span class="php-keyword1">static</span>::<span class="php-var">$events</span>[<span class="php-var">$name</span>] = <span class="php-keyword1">array</span>(<span class="php-var">$closure</span>);
+</span><span id="64" class="l"><a href="#64"> 64: </a>            <span class="php-keyword1">return</span>;
+</span><span id="65" class="l"><a href="#65"> 65: </a>        }
 </span><span id="66" class="l"><a href="#66"> 66: </a>
-</span><span id="67" class="l"><a href="#67"> 67: </a>    <span class="php-comment">/**
-</span></span><span id="68" class="l"><a href="#68"> 68: </a><span class="php-comment">    * Fire the specified event and pass along the corresponding arguments to the
-</span></span><span id="69" class="l"><a href="#69"> 69: </a><span class="php-comment">    * registered callback functions. The format for this functions arguments are
-</span></span><span id="70" class="l"><a href="#70"> 70: </a><span class="php-comment">    * 'event_name' [, arg1[, arg2]]. For example, firing the event 'system_started'
-</span></span><span id="71" class="l"><a href="#71"> 71: </a><span class="php-comment">    * and the time would look like fire('system_started', time()). Any arguments
-</span></span><span id="72" class="l"><a href="#72"> 72: </a><span class="php-comment">    * passed to this function after the event name will be passed to the registered
-</span></span><span id="73" class="l"><a href="#73"> 73: </a><span class="php-comment">    * callback functions as an array.
-</span></span><span id="74" class="l"><a href="#74"> 74: </a><span class="php-comment">    * @return void
-</span></span><span id="75" class="l"><a href="#75"> 75: </a><span class="php-comment">    */</span>
-</span><span id="76" class="l"><a href="#76"> 76: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">static</span> <span class="php-keyword1">function</span> fire() {
-</span><span id="77" class="l"><a href="#77"> 77: </a>        <span class="php-comment">// Get the arguments passed to us.</span>
-</span><span id="78" class="l"><a href="#78"> 78: </a>        <span class="php-var">$args</span> = <span class="php-keyword2">func_get_args</span>();
-</span><span id="79" class="l"><a href="#79"> 79: </a>        <span class="php-var">$num</span> = <span class="php-keyword2">count</span>(<span class="php-var">$args</span>);
-</span><span id="80" class="l"><a href="#80"> 80: </a>
-</span><span id="81" class="l"><a href="#81"> 81: </a>        <span class="php-comment">// If not at least 1, exit silently.</span>
-</span><span id="82" class="l"><a href="#82"> 82: </a>        <span class="php-keyword1">if</span>(<span class="php-var">$num</span> &lt; <span class="php-num">1</span>) {
-</span><span id="83" class="l"><a href="#83"> 83: </a>            <span class="php-keyword1">return</span>;
-</span><span id="84" class="l"><a href="#84"> 84: </a>        }
-</span><span id="85" class="l"><a href="#85"> 85: </a>
-</span><span id="86" class="l"><a href="#86"> 86: </a>        <span class="php-comment">// The first argument should be our event name.</span>
-</span><span id="87" class="l"><a href="#87"> 87: </a>        <span class="php-var">$event</span> = <span class="php-var">$args</span>[<span class="php-num">0</span>];
-</span><span id="88" class="l"><a href="#88"> 88: </a>        <span class="php-keyword1">if</span>(!<span class="php-keyword1">isset</span>(<span class="php-keyword1">static</span>::<span class="php-var">$events</span>[<span class="php-var">$event</span>])) {
-</span><span id="89" class="l"><a href="#89"> 89: </a>            <span class="php-keyword1">return</span>;
-</span><span id="90" class="l"><a href="#90"> 90: </a>        }
-</span><span id="91" class="l"><a href="#91"> 91: </a>
-</span><span id="92" class="l"><a href="#92"> 92: </a>        <span class="php-comment">// If more than one argument, prepare the rest to be passed to our</span>
-</span><span id="93" class="l"><a href="#93"> 93: </a>        <span class="php-comment">// event callback function.</span>
-</span><span id="94" class="l"><a href="#94"> 94: </a>        <span class="php-keyword1">if</span>(<span class="php-var">$num</span> !== <span class="php-num">1</span>) {
-</span><span id="95" class="l"><a href="#95"> 95: </a>            <span class="php-keyword1">unset</span>(<span class="php-var">$args</span>[<span class="php-num">0</span>]);
-</span><span id="96" class="l"><a href="#96"> 96: </a>            <span class="php-var">$args</span> = <span class="php-keyword2">array_values</span>(<span class="php-var">$args</span>);
-</span><span id="97" class="l"><a href="#97"> 97: </a>        }
-</span><span id="98" class="l"><a href="#98"> 98: </a>
-</span><span id="99" class="l"><a href="#99"> 99: </a>        <span class="php-comment">// Fire each callback function registered for this event.</span>
-</span><span id="100" class="l"><a href="#100">100: </a>        <span class="php-keyword1">foreach</span> (<span class="php-keyword1">static</span>::<span class="php-var">$events</span>[<span class="php-var">$event</span>] <span class="php-keyword1">as</span> <span class="php-var">$key</span> =&gt; <span class="php-var">$func</span>) {
-</span><span id="101" class="l"><a href="#101">101: </a>            <span class="php-keyword1">if</span>(<span class="php-var">$func</span> <span class="php-keyword1">instanceOf</span> Closure) {
-</span><span id="102" class="l"><a href="#102">102: </a>                <span class="php-keyword1">if</span>(<span class="php-var">$num</span> === <span class="php-num">1</span>) {
-</span><span id="103" class="l"><a href="#103">103: </a>                    <span class="php-var">$func</span>();
-</span><span id="104" class="l"><a href="#104">104: </a>                } <span class="php-keyword1">else</span> {
-</span><span id="105" class="l"><a href="#105">105: </a>                    <span class="php-var">$func</span>(<span class="php-var">$args</span>);
-</span><span id="106" class="l"><a href="#106">106: </a>                }
-</span><span id="107" class="l"><a href="#107">107: </a>            } <span class="php-keyword1">else</span> <span class="php-keyword1">if</span>(<span class="php-keyword2">is_callable</span>(<span class="php-var">$func</span>)) {
-</span><span id="108" class="l"><a href="#108">108: </a>                <span class="php-keyword1">if</span>(<span class="php-var">$num</span> === <span class="php-num">1</span>) {
-</span><span id="109" class="l"><a href="#109">109: </a>                    <span class="php-keyword2">call_user_func</span>(<span class="php-var">$func</span>);
-</span><span id="110" class="l"><a href="#110">110: </a>                } <span class="php-keyword1">else</span> {
-</span><span id="111" class="l"><a href="#111">111: </a>                    <span class="php-keyword2">call_user_func</span>(<span class="php-var">$func</span>, <span class="php-var">$args</span>);
-</span><span id="112" class="l"><a href="#112">112: </a>                }
-</span><span id="113" class="l"><a href="#113">113: </a>            } <span class="php-keyword1">else</span> {
-</span><span id="114" class="l"><a href="#114">114: </a>                <span class="php-keyword1">continue</span>;
-</span><span id="115" class="l"><a href="#115">115: </a>            }
-</span><span id="116" class="l"><a href="#116">116: </a>        }
-</span><span id="117" class="l"><a href="#117">117: </a>    }
-</span><span id="118" class="l"><a href="#118">118: </a>}
-</span><span id="119" class="l"><a href="#119">119: </a></span></code></pre>
+</span><span id="67" class="l"><a href="#67"> 67: </a>        <span class="php-keyword1">static</span>::<span class="php-var">$events</span>[<span class="php-var">$name</span>][] = <span class="php-var">$closure</span>;
+</span><span id="68" class="l"><a href="#68"> 68: </a>    }
+</span><span id="69" class="l"><a href="#69"> 69: </a>
+</span><span id="70" class="l"><a href="#70"> 70: </a>    <span class="php-comment">/**
+</span></span><span id="71" class="l"><a href="#71"> 71: </a><span class="php-comment">    * Fire the specified event and pass along the corresponding arguments to the
+</span></span><span id="72" class="l"><a href="#72"> 72: </a><span class="php-comment">    * registered callback functions. The format for this functions arguments are
+</span></span><span id="73" class="l"><a href="#73"> 73: </a><span class="php-comment">    * 'event_name' [, arg1[, arg2]]. For example, firing the event 'system_started'
+</span></span><span id="74" class="l"><a href="#74"> 74: </a><span class="php-comment">    * and the time would look like fire('system_started', time()). Any arguments
+</span></span><span id="75" class="l"><a href="#75"> 75: </a><span class="php-comment">    * passed to this function after the event name will be passed to the registered
+</span></span><span id="76" class="l"><a href="#76"> 76: </a><span class="php-comment">    * callback functions as an array.
+</span></span><span id="77" class="l"><a href="#77"> 77: </a><span class="php-comment">    * @return void
+</span></span><span id="78" class="l"><a href="#78"> 78: </a><span class="php-comment">    */</span>
+</span><span id="79" class="l"><a href="#79"> 79: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">static</span> <span class="php-keyword1">function</span> fire() {
+</span><span id="80" class="l"><a href="#80"> 80: </a>        <span class="php-comment">// Get the arguments passed to us.</span>
+</span><span id="81" class="l"><a href="#81"> 81: </a>        <span class="php-var">$args</span> = <span class="php-keyword2">func_get_args</span>();
+</span><span id="82" class="l"><a href="#82"> 82: </a>        <span class="php-var">$num</span> = <span class="php-keyword2">count</span>(<span class="php-var">$args</span>);
+</span><span id="83" class="l"><a href="#83"> 83: </a>
+</span><span id="84" class="l"><a href="#84"> 84: </a>        <span class="php-comment">// If not at least 1, exit silently.</span>
+</span><span id="85" class="l"><a href="#85"> 85: </a>        <span class="php-keyword1">if</span>(<span class="php-var">$num</span> &lt; <span class="php-num">1</span>) {
+</span><span id="86" class="l"><a href="#86"> 86: </a>            <span class="php-keyword1">return</span>;
+</span><span id="87" class="l"><a href="#87"> 87: </a>        }
+</span><span id="88" class="l"><a href="#88"> 88: </a>
+</span><span id="89" class="l"><a href="#89"> 89: </a>        <span class="php-comment">// The first argument should be our event name.</span>
+</span><span id="90" class="l"><a href="#90"> 90: </a>        <span class="php-var">$event</span> = <span class="php-var">$args</span>[<span class="php-num">0</span>];
+</span><span id="91" class="l"><a href="#91"> 91: </a>        <span class="php-keyword1">if</span>(!<span class="php-keyword1">isset</span>(<span class="php-keyword1">static</span>::<span class="php-var">$events</span>[<span class="php-var">$event</span>])) {
+</span><span id="92" class="l"><a href="#92"> 92: </a>            <span class="php-keyword1">return</span>;
+</span><span id="93" class="l"><a href="#93"> 93: </a>        }
+</span><span id="94" class="l"><a href="#94"> 94: </a>
+</span><span id="95" class="l"><a href="#95"> 95: </a>        <span class="php-comment">// If more than one argument, prepare the rest to be passed to our</span>
+</span><span id="96" class="l"><a href="#96"> 96: </a>        <span class="php-comment">// event callback function.</span>
+</span><span id="97" class="l"><a href="#97"> 97: </a>        <span class="php-keyword1">if</span>(<span class="php-var">$num</span> !== <span class="php-num">1</span>) {
+</span><span id="98" class="l"><a href="#98"> 98: </a>            <span class="php-keyword1">unset</span>(<span class="php-var">$args</span>[<span class="php-num">0</span>]);
+</span><span id="99" class="l"><a href="#99"> 99: </a>            <span class="php-var">$args</span> = <span class="php-keyword2">array_values</span>(<span class="php-var">$args</span>);
+</span><span id="100" class="l"><a href="#100">100: </a>        }
+</span><span id="101" class="l"><a href="#101">101: </a>
+</span><span id="102" class="l"><a href="#102">102: </a>        <span class="php-comment">// Fire each callback function registered for this event.</span>
+</span><span id="103" class="l"><a href="#103">103: </a>        <span class="php-keyword1">foreach</span> (<span class="php-keyword1">static</span>::<span class="php-var">$events</span>[<span class="php-var">$event</span>] <span class="php-keyword1">as</span> <span class="php-var">$key</span> =&gt; <span class="php-var">$func</span>) {
+</span><span id="104" class="l"><a href="#104">104: </a>            <span class="php-keyword1">if</span>(<span class="php-var">$func</span> <span class="php-keyword1">instanceOf</span> Closure) {
+</span><span id="105" class="l"><a href="#105">105: </a>                <span class="php-keyword1">if</span>(<span class="php-var">$num</span> === <span class="php-num">1</span>) {
+</span><span id="106" class="l"><a href="#106">106: </a>                    <span class="php-var">$func</span>();
+</span><span id="107" class="l"><a href="#107">107: </a>                } <span class="php-keyword1">else</span> {
+</span><span id="108" class="l"><a href="#108">108: </a>                    <span class="php-var">$func</span>(<span class="php-var">$args</span>);
+</span><span id="109" class="l"><a href="#109">109: </a>                }
+</span><span id="110" class="l"><a href="#110">110: </a>            } <span class="php-keyword1">else</span> <span class="php-keyword1">if</span>(<span class="php-keyword2">is_callable</span>(<span class="php-var">$func</span>)) {
+</span><span id="111" class="l"><a href="#111">111: </a>                <span class="php-keyword1">if</span>(<span class="php-var">$num</span> === <span class="php-num">1</span>) {
+</span><span id="112" class="l"><a href="#112">112: </a>                    <span class="php-keyword2">call_user_func</span>(<span class="php-var">$func</span>);
+</span><span id="113" class="l"><a href="#113">113: </a>                } <span class="php-keyword1">else</span> {
+</span><span id="114" class="l"><a href="#114">114: </a>                    <span class="php-keyword2">call_user_func</span>(<span class="php-var">$func</span>, <span class="php-var">$args</span>);
+</span><span id="115" class="l"><a href="#115">115: </a>                }
+</span><span id="116" class="l"><a href="#116">116: </a>            } <span class="php-keyword1">else</span> {
+</span><span id="117" class="l"><a href="#117">117: </a>                <span class="php-keyword1">continue</span>;
+</span><span id="118" class="l"><a href="#118">118: </a>            }
+</span><span id="119" class="l"><a href="#119">119: </a>        }
+</span><span id="120" class="l"><a href="#120">120: </a>    }
+</span><span id="121" class="l"><a href="#121">121: </a>}
+</span><span id="122" class="l"><a href="#122">122: </a></span></code></pre>
 
 	<div id="footer">
 		Bantam API documentation generated by <a href="http://apigen.org">ApiGen</a>
@@ -246,6 +249,6 @@
 </div>
 </div>
 <script src="resources/combined.js?ba22eb73e2228cf49e019479eca48c9c712611a8"></script>
-<script src="elementlist.js?1a971b1140acecb106e770bf3f3d2ffc40f6c74b"></script>
+<script src="elementlist.js?a9271aa788110d1eabaf8f721ef91a023fa893fc"></script>
 </body>
 </html>

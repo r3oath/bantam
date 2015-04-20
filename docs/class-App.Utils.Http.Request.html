@@ -125,13 +125,13 @@
 		
 		
 		<b>Namespace:</b> <a href="namespace-App.html">App</a>\<a href="namespace-App.Utils.html">Utils</a>\<a href="namespace-App.Utils.Http.html">Http</a><br>
-		<b>Package:</b> Http<br>
+		<b>Package:</b> App\Utils\Http<br>
 
 				<b>License:</b>
 				<a href="http://opensource.org/licenses/MIT">MIT License (MIT)</a><br>
 				<b>Author:</b>
 				Tristan Strathearn <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#114;&#x33;&#x6f;&#97;&#x74;&#x68;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#109;">&#114;&#x33;&#x6f;&#97;&#x74;&#x68;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#109;</a><br>
-			<b>Located at</b> <a href="source-class-App.Utils.Http.Request.html#28-111" title="Go to source code">http/Request.php</a>
+			<b>Located at</b> <a href="source-class-App.Utils.Http.Request.html#28-180" title="Go to source code">http/Request.php</a>
 		<br>
 	</div>
 
@@ -151,7 +151,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isGet">#</a>
-		<code><a href="source-class-App.Utils.Http.Request.html#35-41" title="Go to source code">isGet</a>( )</code>
+		<code><a href="source-class-App.Utils.Http.Request.html#35-42" title="Go to source code">isGet</a>( )</code>
 
 		<div class="description short">
 			<p>Returns true if the current request is an HTTP GET.</p>
@@ -185,7 +185,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isPost">#</a>
-		<code><a href="source-class-App.Utils.Http.Request.html#43-49" title="Go to source code">isPost</a>( )</code>
+		<code><a href="source-class-App.Utils.Http.Request.html#44-57" title="Go to source code">isPost</a>( )</code>
 
 		<div class="description short">
 			<p>Returns true if the current request is an HTTP POST.</p>
@@ -207,6 +207,143 @@
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="isPut" id="_isPut">
+
+		<td class="attributes"><code>
+			 public static
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isPut">#</a>
+		<code><a href="source-class-App.Utils.Http.Request.html#59-72" title="Go to source code">isPut</a>( )</code>
+
+		<div class="description short">
+			<p>Returns true if the current request is an HTTP PUT.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns true if the current request is an HTTP PUT.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isDelete" id="_isDelete">
+
+		<td class="attributes"><code>
+			 public static
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isDelete">#</a>
+		<code><a href="source-class-App.Utils.Http.Request.html#74-87" title="Go to source code">isDelete</a>( )</code>
+
+		<div class="description short">
+			<p>Returns true if the current request is an HTTP DELETE.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns true if the current request is an HTTP DELETE.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isType" id="_isType">
+
+		<td class="attributes"><code>
+			 public static
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isType">#</a>
+		<code><a href="source-class-App.Utils.Http.Request.html#89-106" title="Go to source code">isType</a>( <span>string <var>$type</var></span> )</code>
+
+		<div class="description short">
+			<p>Check if the current request is of the given type.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Check if the current request is of the given type.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$type</var></dt>
+					<dd>The type of request to check for, 'post', 'get', 'put' or 'delete'.</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getType" id="_getType">
+
+		<td class="attributes"><code>
+			 public static
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getType">#</a>
+		<code><a href="source-class-App.Utils.Http.Request.html#108-118" title="Go to source code">getType</a>( )</code>
+
+		<div class="description short">
+			<p>Returns a string representation of the current request type.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns a string representation of the current request type.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					string<br>The request type.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="capture" id="_capture">
 
 		<td class="attributes"><code>
@@ -219,7 +356,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_capture">#</a>
-		<code><a href="source-class-App.Utils.Http.Request.html#51-72" title="Go to source code">capture</a>( <span>string <var>$subfolder</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-App.Utils.Http.Request.html#120-141" title="Go to source code">capture</a>( <span>string <var>$subfolder</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			<p>Returns an array containing the request path structure. For example, if
@@ -260,7 +397,7 @@ a user requests /users/bob, the array returned will contain ['users', 'bob'].</p
 
 		<td class="name"><div>
 		<a class="anchor" href="#_allowedGetParams">#</a>
-		<code><a href="source-class-App.Utils.Http.Request.html#74-91" title="Go to source code">allowedGetParams</a>( <span>array <var>$params</var> = []</span> )</code>
+		<code><a href="source-class-App.Utils.Http.Request.html#143-160" title="Go to source code">allowedGetParams</a>( <span>array <var>$params</var> = []</span> )</code>
 
 		<div class="description short">
 			<p>Returns an array of $_GET parameters and their associated values if they
@@ -301,7 +438,7 @@ are present in the allowed parameters list.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_allowedPostParams">#</a>
-		<code><a href="source-class-App.Utils.Http.Request.html#93-110" title="Go to source code">allowedPostParams</a>( <span>array <var>$params</var> = []</span> )</code>
+		<code><a href="source-class-App.Utils.Http.Request.html#162-179" title="Go to source code">allowedPostParams</a>( <span>array <var>$params</var> = []</span> )</code>
 
 		<div class="description short">
 			<p>Returns an array of $_POST parameters and their associated values if they

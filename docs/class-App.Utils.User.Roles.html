@@ -136,13 +136,13 @@ Roles::add(<span class="php-quote">'user'</span>)-&gt;will(<span class="php-quot
 		
 		
 		<b>Namespace:</b> <a href="namespace-App.html">App</a>\<a href="namespace-App.Utils.html">Utils</a>\<a href="namespace-App.Utils.User.html">User</a><br>
-		<b>Package:</b> User<br>
+		<b>Package:</b> App\Utils\User<br>
 
 				<b>License:</b>
 				<a href="http://opensource.org/licenses/MIT">MIT License (MIT)</a><br>
 				<b>Author:</b>
 				Tristan Strathearn <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#114;&#x33;&#x6f;&#97;&#x74;&#x68;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#109;">&#114;&#x33;&#x6f;&#97;&#x74;&#x68;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#109;</a><br>
-			<b>Located at</b> <a href="source-class-App.Utils.User.Roles.html#28-155" title="Go to source code">user/Roles.php</a>
+			<b>Located at</b> <a href="source-class-App.Utils.User.Roles.html#28-162" title="Go to source code">user/Roles.php</a>
 		<br>
 	</div>
 
@@ -162,7 +162,7 @@ Roles::add(<span class="php-quote">'user'</span>)-&gt;will(<span class="php-quot
 
 		<td class="name"><div>
 		<a class="anchor" href="#_will">#</a>
-		<code><a href="source-class-App.Utils.User.Roles.html#57-65" title="Go to source code">will</a>( <span>string <var>$permission</var></span> )</code>
+		<code><a href="source-class-App.Utils.User.Roles.html#64-72" title="Go to source code">will</a>( <span>string <var>$permission</var></span> )</code>
 
 		<div class="description short">
 			<p>Adds a new permission to the current role.</p>
@@ -201,7 +201,7 @@ Roles::add(<span class="php-quote">'user'</span>)-&gt;will(<span class="php-quot
 
 		<td class="name"><div>
 		<a class="anchor" href="#_inherits">#</a>
-		<code><a href="source-class-App.Utils.User.Roles.html#67-86" title="Go to source code">inherits</a>( <span>string <var>$role</var></span>, <span>array <var>$exclude</var> = []</span> )</code>
+		<code><a href="source-class-App.Utils.User.Roles.html#74-93" title="Go to source code">inherits</a>( <span>string <var>$role</var></span>, <span>array <var>$exclude</var> = []</span> )</code>
 
 		<div class="description short">
 			<p>Adds all the permissions from the specified role to the current role. Optionally
@@ -244,7 +244,7 @@ specifying permissions to exclude.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_load">#</a>
-		<code><a href="source-class-App.Utils.User.Roles.html#88-102" title="Go to source code">load</a>( <span>array <var>$roles_array</var></span> )</code>
+		<code><a href="source-class-App.Utils.User.Roles.html#95-109" title="Go to source code">load</a>( <span>array <var>$roles_array</var></span> )</code>
 
 		<div class="description short">
 			<p>Load in an associative array of roles and permissions. Handy for pulling in
@@ -285,7 +285,7 @@ roles etc from a config file instead of adding each role/permission manually.</p
 
 		<td class="name"><div>
 		<a class="anchor" href="#_add">#</a>
-		<code><a href="source-class-App.Utils.User.Roles.html#104-116" title="Go to source code">add</a>( <span>string <var>$name</var></span> )</code>
+		<code><a href="source-class-App.Utils.User.Roles.html#111-123" title="Go to source code">add</a>( <span>string <var>$name</var></span> )</code>
 
 		<div class="description short">
 			<p>Add a new role.</p>
@@ -324,7 +324,7 @@ roles etc from a config file instead of adding each role/permission manually.</p
 
 		<td class="name"><div>
 		<a class="anchor" href="#_addPermission">#</a>
-		<code><a href="source-class-App.Utils.User.Roles.html#118-135" title="Go to source code">addPermission</a>( <span>string <var>$role_name</var></span>, <span>string <var>$permission</var></span> )</code>
+		<code><a href="source-class-App.Utils.User.Roles.html#125-142" title="Go to source code">addPermission</a>( <span>string <var>$role_name</var></span>, <span>string <var>$permission</var></span> )</code>
 
 		<div class="description short">
 			<p>Add a permission to the specified role.</p>
@@ -365,7 +365,7 @@ roles etc from a config file instead of adding each role/permission manually.</p
 
 		<td class="name"><div>
 		<a class="anchor" href="#_can">#</a>
-		<code><a href="source-class-App.Utils.User.Roles.html#137-154" title="Go to source code">can</a>( <span>string <var>$role</var></span>, <span>string <var>$permission</var></span> )</code>
+		<code><a href="source-class-App.Utils.User.Roles.html#144-161" title="Go to source code">can</a>( <span>string <var>$role</var></span>, <span>string <var>$permission</var></span> )</code>
 
 		<div class="description short">
 			<p>Checks if the specified role has a particular permission. Named to be easily

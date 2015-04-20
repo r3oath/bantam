@@ -137,13 +137,13 @@ Config::create(Assets::load(<span class="php-quote">'app/config.php'</span>));
 		
 		
 		<b>Namespace:</b> <a href="namespace-App.html">App</a>\<a href="namespace-App.Utils.html">Utils</a>\<a href="namespace-App.Utils.Data.html">Data</a><br>
-		<b>Package:</b> Data<br>
+		<b>Package:</b> App\Utils\Data<br>
 
 				<b>License:</b>
 				<a href="http://opensource.org/licenses/MIT">MIT License (MIT)</a><br>
 				<b>Author:</b>
 				Tristan Strathearn <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#114;&#x33;&#x6f;&#97;&#x74;&#x68;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#109;">&#114;&#x33;&#x6f;&#97;&#x74;&#x68;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#109;</a><br>
-			<b>Located at</b> <a href="source-class-App.Utils.Data.Assets.html#28-80" title="Go to source code">data/Assets.php</a>
+			<b>Located at</b> <a href="source-class-App.Utils.Data.Assets.html#30-123" title="Go to source code">data/Assets.php</a>
 		<br>
 	</div>
 
@@ -163,7 +163,7 @@ Config::create(Assets::load(<span class="php-quote">'app/config.php'</span>));
 
 		<td class="name"><div>
 		<a class="anchor" href="#_load">#</a>
-		<code><a href="source-class-App.Utils.Data.Assets.html#46-57" title="Go to source code">load</a>( <span>string <var>$name</var></span> )</code>
+		<code><a href="source-class-App.Utils.Data.Assets.html#48-59" title="Go to source code">load</a>( <span>string <var>$name</var></span> )</code>
 
 		<div class="description short">
 			<p>Load (php require) the given asset, retuns the results of the file.</p>
@@ -202,7 +202,7 @@ Config::create(Assets::load(<span class="php-quote">'app/config.php'</span>));
 
 		<td class="name"><div>
 		<a class="anchor" href="#_css">#</a>
-		<code><a href="source-class-App.Utils.Data.Assets.html#59-68" title="Go to source code">css</a>( <span>string <var>$name</var></span> )</code>
+		<code><a href="source-class-App.Utils.Data.Assets.html#61-70" title="Go to source code">css</a>( <span>string <var>$name</var></span> )</code>
 
 		<div class="description short">
 			<p>Creates an HTML css link entry given the asset name.</p>
@@ -241,7 +241,7 @@ Config::create(Assets::load(<span class="php-quote">'app/config.php'</span>));
 
 		<td class="name"><div>
 		<a class="anchor" href="#_script">#</a>
-		<code><a href="source-class-App.Utils.Data.Assets.html#70-79" title="Go to source code">script</a>( <span>string <var>$name</var></span> )</code>
+		<code><a href="source-class-App.Utils.Data.Assets.html#72-81" title="Go to source code">script</a>( <span>string <var>$name</var></span> )</code>
 
 		<div class="description short">
 			<p>Creates an HTML js script entry given the asset name.</p>
@@ -255,6 +255,49 @@ Config::create(Assets::load(<span class="php-quote">'app/config.php'</span>));
 				<div class="list"><dl>
 					<dt><var>$name</var></dt>
 					<dd>The name of the asset.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					void.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="folder" id="_folder">
+
+		<td class="attributes"><code>
+			 public static
+
+			void.
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_folder">#</a>
+		<code><a href="source-class-App.Utils.Data.Assets.html#83-122" title="Go to source code">folder</a>( <span>string <var>$item</var></span>, <span>array <var>$allowed_extensions</var> = [<span class="php-quote">'.php'</span>]</span> )</code>
+
+		<div class="description short">
+			<p>Recursively traverses the given folder and loads all files that end with
+the given allowed extensions, defaults to ['.php'].</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Recursively traverses the given folder and loads all files that end with
+the given allowed extensions, defaults to ['.php'].</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$item</var></dt>
+					<dd>The directory to scan.</dd>
+					<dt><var>$allowed_extensions</var></dt>
+					<dd>An array of allowed filed extensions.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
