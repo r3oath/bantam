@@ -50,7 +50,7 @@ class Form {
         $method = ($method == 'post' || $method == 'put' || $method == 'delete') ? 'post' : 'get';
 
         ?>
-            <form action="<?php echo $action; ?>" method="<?php echo $method; ?>">
+            <form action="<?php echo $action; ?>" method="<?php echo $method; ?>" enctype="multipart/form-data">
             <input type="hidden" name="_request" value="<?php echo $request_type; ?>">
         <?php
 
@@ -76,74 +76,97 @@ class Form {
     }
 
     /**
-    * Create a form input given the name, type and if the input is flashable. Flashable
+    * Create a form input given the name and options. In the options, flashable
     * means the inputs previous value will be automatically inserted for you. This
-    * is useful for when a form did not validate properly and need to user to correct
+    * is useful for when a form did not validate properly and need the user to correct
     * this field. This will output the relative HTML to the page.
+    * Options include 'flashable' => [true|false], 'type' => [string(default='text')],
+    * 'class' => [string]
     * @param string $name The name of the input.
-    * @param string $type The type of the input, eg: text, password etc.
-    * @param bool $flashable Whether this input can be flashed with old output.
+    * @param array $options The options to pass in as an associative array.
     * @return void
     */
-    public static function input($name, $type, $flashable=true) {
+    public static function input($name, $options=[]) {
         $value = null;
-        if($flashable === true) {
+        if(isset($options['flashable']) && $options['flashable'] === true) {
             $value = static::flash($name);
         }
 
+        $type = isset($options['type']) ? $options['type'] : 'text';
+        $class = isset($options['class']) ? $options['class'] : '';
+
         ?>
-            <input type="<?php echo $type; ?>" name="<?php echo $name; ?>" id="<?php echo $name; ?>" value="<?php echo ($value !== null) ? $value : ''; ?>">
+            <input type="<?php echo $type; ?>" class="<?php echo $class; ?>" name="<?php echo $name; ?>" id="<?php echo $name; ?>" value="<?php echo ($value !== null) ? $value : ''; ?>">
         <?php
     }
 
     /**
-    * Create a form textarea given the name, options which include key/value pairs
-    * for 'rows' and 'cols' which default to 30 and 10 respectively. Flashable
+    * Create a file upload input given the name and options. This will output the
+    * relative HTML to the page.
+    * @param string $name The name of the input.
+    * @param array $options The options to pass in as an associative array.
+    * @return void.
+    */
+    public static function file($name, $options=[]) {
+        $options['type'] = 'file';
+        $options['flashable'] = false;
+        static::input($name, $options);
+    }
+
+    /**
+    * Create a form textarea given the name and options, in the options flashable
     * means the textarea's previous value will be automatically inserted for you. This
     * is useful for when a form did not validate properly and need to user to correct
-    * this field. This will output the relative HTML to the page.
+    * this field. This will output the relative HTML to the page. Options include:
+    * 'cols' => [string(default='30')], 'rows' => [string(default='10')], 'flashable'
+    * => [true|false], 'class' => [string]
     * @param string $name The name of the textarea.
-    * @param array $options The array of options for 'rows' and 'cols', eg: ['rows' => 14].
-    * @param bool $flashable Whether this input can be flashed with old output.
+    * @param array $options The options to pass in as an associative array.
     * @return void
     */
-    public static function textarea($name, $options=[], $flashable=true) {
+    public static function textarea($name, $options=[]) {
         $value = null;
-        if($flashable === true) {
+        if(isset($options['flashable']) && $options['flashable'] === true) {
             $value = static::flash($name);
         }
 
-        $cols = (isset($options['cols'])) ? $options['cols'] : '30';
-        $rows = (isset($options['rows'])) ? $options['cols'] : '10';
+        $cols = isset($options['cols']) ? $options['cols'] : '30';
+        $rows = isset($options['rows']) ? $options['rows'] : '10';
+        $class = isset($options['class']) ? $options['class'] : '';
 
         ?>
-            <textarea name="<?php echo $name; ?>" id="<?php echo $name; ?>" cols="<?php echo $cols; ?>" rows="<?php echo $rows; ?>"><?php echo ($value !== null) ? $value : ''; ?></textarea>
+            <textarea name="<?php echo $name; ?>" class="<?php echo $class; ?>" id="<?php echo $name; ?>" cols="<?php echo $cols; ?>" rows="<?php echo $rows; ?>"><?php echo ($value !== null) ? $value : ''; ?></textarea>
         <?php
     }
 
     /**
-    * Create a form select box given the name, options which include key/value pairs
-    * for the relative select options (name/value), example ['QLD' => 'Queensland']. Flashable
-    * means the select's previous option will be automatically selected for you. This
+    * Create a form select box given the name, children which include key/value pairs
+    * for the relative select options (name/value), example ['QLD' => 'Queensland']. In the options,
+    * flashable means the select's previous option will be automatically selected for you. This
     * is useful for when a form did not validate properly and need to user to correct
-    * this field. This will output the relative HTML to the page.
+    * this field. This will output the relative HTML to the page. Options include
+    * 'class' => [string], 'class_children' => [string], 'class_selected' => [string],
+    * 'flashable' => [true|false].
     * @param string $name The name of the select.
-    * @param array $options The array of options for the select dropdown.
-    * @param bool $flashable Whether this input can be flashed with old output.
+    * @param array $children The array of options for the select dropdown.
     * @return void
     */
-    public static function select($name, $options=[], $flashable=true) {
+    public static function select($name, $children, $options=[]) {
         $selected = null;
-        if($flashable === true) {
+        if(isset($options['flashable']) && $options['flashable'] === true) {
             $selected = static::flash($name);
         }
 
+        $class = isset($options['class']) ? $options['class'] : '';
+        $class_children = isset($options['class_children']) ? $options['class_children'] : '';
+        $class_selected = isset($options['class_selected']) ? $options['class_selected'] : '';
+
         ?>
-            <select name="<?php echo $name; ?>" id="<?php echo $name; ?>">
+            <select name="<?php echo $name; ?>" class="<?php echo $class; ?>" id="<?php echo $name; ?>">
         <?php
-            foreach ($options as $key => $value) {
+            foreach ($children as $key => $value) {
                 ?>
-                    <option value="<?php echo $value; ?>" <?php echo ($selected !== null && $selected === $key) ? 'selected' : ''; ?>><?php echo $key; ?></option>
+                    <option value="<?php echo $value; ?>" class="<?php echo ($selected !== null && $selected === $value) ? $class_children.' '.$class_selected : $class_children; ?>" <?php echo ($selected !== null && $selected === $value) ? 'selected' : ''; ?>><?php echo $value; ?></option>
                 <?php
             }
         ?>
@@ -157,8 +180,9 @@ class Form {
     * @param string $value The value of the submit button, eg: 'Submit Comment'.
     * @return void
     */
-    public static function submit($name='submit', $value='Submit Form') {
-        static::button($name, $value, 'submit');
+    public static function submit($name='submit', $options=[]) {
+        $options['type'] = 'submit';
+        static::button($name, $options);
     }
 
     /**
@@ -168,9 +192,13 @@ class Form {
     * @param string $type The type of the button, defaults to 'button'.
     * @return void
     */
-    public static function button($name, $value, $type='button') {
+    public static function button($name, $options=[]) {
+        $type = isset($options['type']) ? $options['type'] : 'button';
+        $value = isset($options['value']) ? $options['value'] : 'Submit';
+        $class = isset($options['class']) ? $options['class'] : '';
+
         ?>
-            <button type="<?php echo $type; ?>" name="<?php echo $name; ?>" id="<?php echo $name; ?>"><?php echo $value; ?></button>
+            <button type="<?php echo $type; ?>" name="<?php echo $name; ?>" class="<?php echo $class; ?>" id="<?php echo $name; ?>"><?php echo $value; ?></button>
         <?php
     }
 
