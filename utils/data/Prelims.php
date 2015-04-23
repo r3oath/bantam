@@ -139,4 +139,21 @@ class Prelims {
     public static function endsWith($string, $needle) {
         return substr($string, -strlen($needle)) === $needle;
     }
+
+    /**
+    * Takes a delimited string and retuns a clean (trimmed) array of each element.
+    * For example '1, 2, 3' would return ['1', '2', '3'].
+    * @param string $list The delimited string to process.
+    * @param string $delim The delimiter to break the string up on.
+    * @return array An array of all items in the string.
+    */
+    public static function cleanList($list, $delim) {
+        $parts = explode($delim, $list);
+        $clean = array();
+        foreach ($parts as $part) {
+            $clean[] = trim($part);
+        }
+
+        return $clean;
+    }
 }
