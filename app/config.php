@@ -14,4 +14,6 @@ return array(
     'bantam_app_secret_key'        => 'Change me!',
     'bantam_bcrypt_cost'           => 10,
     'bantam_default_locale'        => 'en',
+    'bantam_allowed_file_exts'     => 'jpg, jpeg, png, gif',
+    'bantam_max_file_size'         => 2097152
 );
