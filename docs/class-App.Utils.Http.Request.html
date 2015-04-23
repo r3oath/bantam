@@ -131,7 +131,7 @@
 				<a href="http://opensource.org/licenses/MIT">MIT License (MIT)</a><br>
 				<b>Author:</b>
 				Tristan Strathearn <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#114;&#x33;&#x6f;&#97;&#x74;&#x68;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#109;">&#114;&#x33;&#x6f;&#97;&#x74;&#x68;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#109;</a><br>
-			<b>Located at</b> <a href="source-class-App.Utils.Http.Request.html#28-180" title="Go to source code">http/Request.php</a>
+			<b>Located at</b> <a href="source-class-App.Utils.Http.Request.html#28-169" title="Go to source code">http/Request.php</a>
 		<br>
 	</div>
 
@@ -385,81 +385,42 @@ a user requests /users/bob, the array returned will contain ['users', 'bob'].</p
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="allowedGetParams" id="_allowedGetParams">
+	<tr data-order="allowedParams" id="_allowedParams">
 
 		<td class="attributes"><code>
 			 public static
 
-			array
+			
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_allowedGetParams">#</a>
-		<code><a href="source-class-App.Utils.Http.Request.html#143-160" title="Go to source code">allowedGetParams</a>( <span>array <var>$params</var> = []</span> )</code>
+		<a class="anchor" href="#_allowedParams">#</a>
+		<code><a href="source-class-App.Utils.Http.Request.html#143-168" title="Go to source code">allowedParams</a>( <span>array <var>$params</var> = []</span>, <span>string <var>$limit_type</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
-			<p>Returns an array of $_GET parameters and their associated values if they
-are present in the allowed parameters list.</p>
+			<p>Returns an array of the parameters specified in the params array and their
+respective values if they are set in either the $_POST or $_GET globals.
+If you'd like to limit your search to a particular request type, pass in the
+request type as a second parameter, eg: 'put'.</p>
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Returns an array of $_GET parameters and their associated values if they
-are present in the allowed parameters list.</p>
+			<p>Returns an array of the parameters specified in the params array and their
+respective values if they are set in either the $_POST or $_GET globals.
+If you'd like to limit your search to a particular request type, pass in the
+request type as a second parameter, eg: 'put'.</p>
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$params</var></dt>
-					<dd>The list of allowed parameters.</dd>
+					<dd>The list of parameters to search and collect.</dd>
+					<dt><var>$limit_type</var></dt>
+					<dd>If set, will limit parameter search to only the given request.</dd>
 				</dl></div>
 
-				<h4>Returns</h4>
-				<div class="list">
-					array
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="allowedPostParams" id="_allowedPostParams">
-
-		<td class="attributes"><code>
-			 public static
-
-			array
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_allowedPostParams">#</a>
-		<code><a href="source-class-App.Utils.Http.Request.html#162-179" title="Go to source code">allowedPostParams</a>( <span>array <var>$params</var> = []</span> )</code>
-
-		<div class="description short">
-			<p>Returns an array of $_POST parameters and their associated values if they
-are present in the allowed parameters list.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns an array of $_POST parameters and their associated values if they
-are present in the allowed parameters list.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$params</var></dt>
-					<dd>The list of allowed parameters.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					array
-				</div>
 
 
 

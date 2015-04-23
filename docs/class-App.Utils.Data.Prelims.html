@@ -70,6 +70,7 @@
 				<li><a href="class-App.Utils.Data.Filters.html">Filters</a></li>
 				<li class="active"><a href="class-App.Utils.Data.Prelims.html">Prelims</a></li>
 				<li><a href="class-App.Utils.Data.Sanitize.html">Sanitize</a></li>
+				<li><a href="class-App.Utils.Data.Uploads.html">Uploads</a></li>
 			</ul>
 
 
@@ -142,7 +143,7 @@ Prelims::clamp(<span class="php-num">3</span>, <span class="php-num">5</span>, <
 				<a href="http://opensource.org/licenses/MIT">MIT License (MIT)</a><br>
 				<b>Author:</b>
 				Tristan Strathearn <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#114;&#x33;&#x6f;&#97;&#x74;&#x68;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#109;">&#114;&#x33;&#x6f;&#97;&#x74;&#x68;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#109;</a><br>
-			<b>Located at</b> <a href="source-class-App.Utils.Data.Prelims.html#28-142" title="Go to source code">data/Prelims.php</a>
+			<b>Located at</b> <a href="source-class-App.Utils.Data.Prelims.html#28-159" title="Go to source code">data/Prelims.php</a>
 		<br>
 	</div>
 
@@ -392,6 +393,49 @@ example clamp(3, 5, 10) will return 5, clamp(8, 3, 5) will return 5 and clamp(3,
 				<h4>Returns</h4>
 				<div class="list">
 					boolean<br>True if string ends with substring, false otherwise.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="cleanList" id="_cleanList">
+
+		<td class="attributes"><code>
+			 public static
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_cleanList">#</a>
+		<code><a href="source-class-App.Utils.Data.Prelims.html#143-158" title="Go to source code">cleanList</a>( <span>string <var>$list</var></span>, <span>string <var>$delim</var></span> )</code>
+
+		<div class="description short">
+			<p>Takes a delimited string and retuns a clean (trimmed) array of each element.
+For example '1, 2, 3' would return ['1', '2', '3'].</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Takes a delimited string and retuns a clean (trimmed) array of each element.
+For example '1, 2, 3' would return ['1', '2', '3'].</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$list</var></dt>
+					<dd>The delimited string to process.</dd>
+					<dt><var>$delim</var></dt>
+					<dd>The delimiter to break the string up on.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					array<br>An array of all items in the string.
 				</div>
 
 

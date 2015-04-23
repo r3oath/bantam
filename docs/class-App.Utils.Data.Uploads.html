@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class App\Utils\Data\Uploads | Bantam PHP Framework</title>
+
+	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li class="active">
+					<a href="namespace-App.html">
+						App<span></span>
+					</a>
+
+						<ul>
+				<li class="active">
+					<a href="namespace-App.Utils.html">
+						Utils<span></span>
+					</a>
+
+						<ul>
+				<li class="active">
+					<a href="namespace-App.Utils.Data.html">
+						Data					</a>
+
+						</li>
+				<li>
+					<a href="namespace-App.Utils.Http.html">
+						Http					</a>
+
+						</li>
+				<li>
+					<a href="namespace-App.Utils.Input.html">
+						Input					</a>
+
+						</li>
+				<li>
+					<a href="namespace-App.Utils.Misc.html">
+						Misc					</a>
+
+						</li>
+				<li>
+					<a href="namespace-App.Utils.User.html">
+						User					</a>
+
+						</li>
+							</ul></li></ul></li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-App.Utils.Data.Assets.html">Assets</a></li>
+				<li><a href="class-App.Utils.Data.Crypto.html">Crypto</a></li>
+				<li><a href="class-App.Utils.Data.Filters.html">Filters</a></li>
+				<li><a href="class-App.Utils.Data.Prelims.html">Prelims</a></li>
+				<li><a href="class-App.Utils.Data.Sanitize.html">Sanitize</a></li>
+				<li class="active"><a href="class-App.Utils.Data.Uploads.html">Uploads</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-App.Utils.Data.html" title="Summary of App\Utils\Data"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Uploads</h1>
+
+
+	<div class="description">
+	<p>Handles the uploading of files and data to the server.</p>
+
+<pre><span class="php-comment">// Our example image upload form was submitted...</span>
+<span class="php-keyword1">if</span>(Form::submitted()) {
+    <span class="php-comment">// Options: If any files already exist, give them a new unique name.</span>
+    <span class="php-var">$results</span> = Uploads::walk(<span class="php-quote">'storage'</span>, [<span class="php-quote">'unique'</span> =&gt; <span class="php-keyword1">true</span>]);
+    <span class="php-keyword1">if</span>(Uploads::failed(<span class="php-var">$results</span>, <span class="php-quote">'image_field'</span>)) {
+        <span class="php-keyword1">echo</span> Uploads::error(<span class="php-var">$results</span>, <span class="php-quote">'image_field'</span>);
+    } <span class="php-keyword1">else</span> {
+        <span class="php-comment">// Newly uploaded file is now available at...</span>
+        <span class="php-comment">// eg: storage/0_image.jpg</span>
+        <span class="php-keyword1">echo</span> Uploads::path(<span class="php-var">$results</span>, <span class="php-quote">'image_field'</span>);
+    }
+}</pre>
+	</div>
+
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-App.html">App</a>\<a href="namespace-App.Utils.html">Utils</a>\<a href="namespace-App.Utils.Data.html">Data</a><br>
+		<b>Package:</b> App\Utils\Data<br>
+
+				<b>License:</b>
+				<a href="http://opensource.org/licenses/MIT">MIT License (MIT)</a><br>
+				<b>Author:</b>
+				Tristan Strathearn <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#114;&#x33;&#x6f;&#97;&#x74;&#x68;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#109;">&#114;&#x33;&#x6f;&#97;&#x74;&#x68;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#109;</a><br>
+			<b>Located at</b> <a href="source-class-App.Utils.Data.Uploads.html#31-205" title="Go to source code">data/Uploads.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="handle" id="_handle">
+
+		<td class="attributes"><code>
+			 public static
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_handle">#</a>
+		<code><a href="source-class-App.Utils.Data.Uploads.html#52-133" title="Go to source code">handle</a>( <span>array <var>$file</var></span>, <span>string <var>$uploads_dir</var></span>, <span>array <var>$options</var> = []</span> )</code>
+
+		<div class="description short">
+			<p>Processes and handles a single file upload to the server. Numerous options
+can be passed in a associative array to customize the upload process. These include:
+[
+    'ignore_ext' => [true|false] // Ignores the file extension check.
+    'ignore_size' => [true|false] // Ignores the file size check.
+    'overwrite' => [true|false] // If true, will overwrite existing files with the same name.
+    'unique' => [true|false] // If true, will generate a unique name for the file if one with the same name already exists.
+]</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Processes and handles a single file upload to the server. Numerous options
+can be passed in a associative array to customize the upload process. These include:
+[ 'ignore_ext' => [true|false] // Ignores the file extension check. 'ignore_size' => [true|false] // Ignores the file size check. 'overwrite' => [true|false] // If true, will overwrite existing files with the same name. 'unique' => [true|false] // If true, will generate a unique name for the file if one with the same name already exists.
+]</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$file</var></dt>
+					<dd>The $_FILES['xyz'] entry to process.</dd>
+					<dt><var>$uploads_dir</var></dt>
+					<dd>The directory to store the newly uploaded file.</dd>
+					<dt><var>$options</var></dt>
+					<dd>Various options to use while processing.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					array<br>An array of file statistics or an 'error' key with a message if one occured.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="walk" id="_walk">
+
+		<td class="attributes"><code>
+			 public static
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_walk">#</a>
+		<code><a href="source-class-App.Utils.Data.Uploads.html#161-174" title="Go to source code">walk</a>( <span>string <var>$uploads_dir</var></span>, <span>array <var>$options</var> = []</span> )</code>
+
+		<div class="description short">
+			<p>Walks the $_FILES array and handles each file entry as a seperate upload.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Walks the $_FILES array and handles each file entry as a seperate upload.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$uploads_dir</var></dt>
+					<dd>The directory to store the newly uploaded file.</dd>
+					<dt><var>$options</var></dt>
+					<dd>Various options to use while processing (see the docs for Uploads::handle()).</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					array<br>An associative array of each files input name field and its upload status (see the docs for Uploads::handle()).
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="failed" id="_failed">
+
+		<td class="attributes"><code>
+			 public static
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_failed">#</a>
+		<code><a href="source-class-App.Utils.Data.Uploads.html#176-184" title="Go to source code">failed</a>( <span>array <var>$results</var></span>, <span>string <var>$token</var></span> )</code>
+
+		<div class="description short">
+			<p>Returns true if the given field in the results has encountered an error.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns true if the given field in the results has encountered an error.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$results</var></dt>
+					<dd>The results of a Uploads::walk(...).</dd>
+					<dt><var>$token</var></dt>
+					<dd>The file input name to check against.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if an error occured, false otherwise.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="error" id="_error">
+
+		<td class="attributes"><code>
+			 public static
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_error">#</a>
+		<code><a href="source-class-App.Utils.Data.Uploads.html#186-194" title="Go to source code">error</a>( <span>array <var>$results</var></span>, <span>string <var>$token</var></span> )</code>
+
+		<div class="description short">
+			<p>Gets the error message associated with the given input field name in the results.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Gets the error message associated with the given input field name in the results.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$results</var></dt>
+					<dd>The results of a Uploads::walk(...).</dd>
+					<dt><var>$token</var></dt>
+					<dd>The file input name to return the error message for.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string<br>The error message string.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="path" id="_path">
+
+		<td class="attributes"><code>
+			 public static
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_path">#</a>
+		<code><a href="source-class-App.Utils.Data.Uploads.html#196-204" title="Go to source code">path</a>( <span>array <var>$results</var></span>, <span>string <var>$token</var></span> )</code>
+
+		<div class="description short">
+			<p>Returns the local path for the newly uploaded file given its input field name.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the local path for the newly uploaded file given its input field name.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$results</var></dt>
+					<dd>The results of a Uploads::walk(...).</dd>
+					<dt><var>$token</var></dt>
+					<dd>The file input name to return the local path for.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string<br>The local file path.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		Bantam PHP Framework API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>
