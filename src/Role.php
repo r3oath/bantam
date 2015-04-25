@@ -60,10 +60,6 @@ class Role {
             return false;
         }
 
-        if(!isset(static::$roles[$role])) {
-            return false;
-        }
-
         static::$roles[$role][] = $perm;
         return true;
     }
