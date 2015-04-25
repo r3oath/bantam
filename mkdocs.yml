@@ -1,0 +1,9 @@
+site_name: Bantam PHP Framework
+repo_url: https://github.com/r3oath/bantam/
+repo_name: GitHub
+site_description: The awesome documentation for Bantam - A lightweight PHP framework for the simpler things.
+site_author: Tristan Strathean <r3oath@gmail.com>
+theme: readthedocs
+markdown_extensions: [admonition]
+pages:
+- [index.md, Home]
