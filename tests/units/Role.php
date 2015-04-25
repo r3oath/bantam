@@ -25,12 +25,18 @@ class Role extends atoum\test {
         bantam\Role::create('admin');
 
         // Edge cases.
+        $this->variable(bantam\Role::set(null, ''))->isEqualTo(false);
+        $this->variable(bantam\Role::set('', ''))->isEqualTo(false);
+        $this->variable(bantam\Role::set(123, ''))->isEqualTo(false);
         $this->variable(bantam\Role::set('admin', ''))->isEqualTo(false);
         $this->variable(bantam\Role::set('admin', null))->isEqualTo(false);
         $this->variable(bantam\Role::set('admin', 123))->isEqualTo(false);
         $this->variable(bantam\Role::can('admin', ''))->isEqualTo(false);
         $this->variable(bantam\Role::can('admin', null))->isEqualTo(false);
         $this->variable(bantam\Role::can('admin', 123))->isEqualTo(false);
+        $this->variable(bantam\Role::can(null, ''))->isEqualTo(false);
+        $this->variable(bantam\Role::can('', ''))->isEqualTo(false);
+        $this->variable(bantam\Role::can(123, ''))->isEqualTo(false);
 
         // Normal use.
         $this->variable(bantam\Role::set('admin', 'create'))->isEqualTo(true);
