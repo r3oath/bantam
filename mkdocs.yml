@@ -2,5 +2,6 @@ site_name: Bantam
 markdown_extensions: [admonition]
 theme: readthedocs
 pages:
+- [index.md, Home]
 - [prelim.md, Classes, Prelim]
 - [role.md, Classes, Role]
