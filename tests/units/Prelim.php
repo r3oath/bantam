@@ -165,5 +165,7 @@ class Prelim extends atoum\test {
         $this->variable(bantam\Prelim::clamp($value, $value+1, $value+10))->isEqualTo($value+1);
         $this->variable(bantam\Prelim::clamp($value, 0, 0))->isEqualTo(0);
         $this->variable(bantam\Prelim::clamp($value, 25, 25))->isEqualTo(25);
+        $this->variable(bantam\Prelim::clamp(2.3, 2, 5))->isEqualTo(2.3);
+        $this->variable(bantam\Prelim::clamp(2.3, 3, 5))->isEqualTo(3);
     }
 }
