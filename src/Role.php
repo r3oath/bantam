@@ -27,6 +27,71 @@ require_once 'Prelim.php';
 class Role {
     private static $roles = array();
 
+    public static function load($arr) {
+        if($arr === null || !is_array($arr) || count($arr) < 1) {
+            return false;
+        }
+
+        $success = 0;
+        foreach ($arr as $key => $value) {
+            if($key !== null && is_string($key) && strlen($key) > 0) {
+                static::create($key);
+                $success += 1;
+                if($value !== null && is_array($value) && count($value) > 0) {
+                    foreach ($value as $perm) {
+                        static::set($key, $perm);
+                    }
+                }
+            } else {
+                if($value !== null && is_string($value) && strlen($value) > 0) {
+                    static::create($value);
+                    $success += 1;
+                }
+            }
+        }
+
+        return $success > 0;
+    }
+
+    public static function reset($role=null) {
+        if($role === null) {
+            return false;
+        }
+
+        if($role === true) {
+            static::$roles = array();
+            return true;
+        }
+
+        if(!static::exists($role)) {
+            return false;
+        }
+
+        unset(static::$roles[$role]);
+        return true;
+    }
+
+    public static function getRoles() {
+        $roles_only = array();
+        foreach (static::$roles as $key => $value) {
+            $roles_only[] = $key;
+        }
+        return $roles_only;
+    }
+
+    public static function getPerms($role) {
+        if(!static::exists($role)) {
+            return array();
+        }
+
+        $perms_only = array();
+        foreach (static::$roles[$role] as $perm) {
+            $perms_only[] = $perm;
+        }
+
+        return $perms_only;
+    }
+
     public static function create($role) {
         if(Prelim::strNullOrEmpty($role)) {
             return false;
