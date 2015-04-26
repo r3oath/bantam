@@ -7,7 +7,8 @@ A lightweight and simple PHP framework.
 
 ## Download
 Download the latest PHAR build here: [PHAR Build](https://github.com/r3oath/bantam/blob/master/build/bantam.phar?raw=true)
-Download the latest PHAR GZ build here: [PHAR Build](https://github.com/r3oath/bantam/blob/master/build/bantam.phar.gz?raw=true)
+
+Download the latest PHAR GZ build here: [PHAR GZ Build](https://github.com/r3oath/bantam/blob/master/build/bantam.phar.gz?raw=true)
 
 ## Usage
 It's dead easy to start using Bantam! At the top of your PHP file, simply add the following 2 lines:
