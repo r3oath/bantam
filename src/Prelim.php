@@ -53,7 +53,7 @@ class Prelim {
     }
 
     public static function hasLength($str, $options=null) {
-        if($str === null || !is_string($str) || strlen($str) < 1) {
+        if(static::strNullOrEmpty($str)) {
             return false;
         }
 
