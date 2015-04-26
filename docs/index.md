@@ -13,14 +13,13 @@ Download the latest PHAR GZ build here: [PHAR GZ Build](https://github.com/r3oat
 ## Usage
 It's dead easy to start using Bantam! At the top of your PHP file, simply add the following 2 lines:
 
-```
+```php
 require_once 'phar://path/to/bantam.phar.gz';
-// OR require_once 'phar://path/to/bantam.phar';
 use \r3oath\bantam;
 ```
 
-Then wherever you want to use a particular class/feature of Bantam, simple call the class/feature like so:
+Then wherever you want to use a particular Bantam class:
 
-```
+```php
 bantam\Prelim::endsWith('This is awesome!', 'awesome!');
 ```
