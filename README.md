@@ -7,9 +7,8 @@ A lightweight and simple PHP framework.
 
 ## The Philosophy
 
-Bantam is a lightweight, single file, implementation agnostic solution that makes your
-PHP projects easier to complete in less time. It'll strive to always be fully tested with
-100% code coverage, coupled together with up to date well written documentation.
+Bantam will always strive to be a lightweight, single file, implementation agnostic
+solution that help your write better, faster and more manageable PHP projects.
 
 ## Download
 
