@@ -3,9 +3,9 @@ Handles preliminary data processing and validation.
 
 ## allowedKeys
 #### public static function allowedKeys(array $arr, array $keys=null)
-Takes the `$arr` and returns a copy of it with all key/value pairs removed
-that don't match the keys specified in the `$keys`. If `$keys` is not
-specified, it will simply return the `$arr`.
+Takes the `$arr` array and returns a copy of it with all key/value pairs removed
+that don't match the keys specified in the `$keys` array. If `$keys` is not
+specified, it will simply return the `$arr` array.
 
 !!! hint
     This is useful when grabbing just the `$_POST` or `$_GET` values you want
@@ -23,8 +23,8 @@ Check that the specified array `$arr` doesn't contain any null values.
 
 !!! hint
     Following on from the `allowedKeys` example, this can be used to verify that
-    you got the `$_POST` or `$_GET` fields you require. For example
-    `if(Prelim::hasNulls($my_vars))...`
+    you got the `$_POST` or `$_GET` variables you require. For example
+    `if(!Prelim::hasNulls($my_vars))...`
 
 ## isNumeric
 #### public static function isNumeric(string $str, array $options=null)
@@ -42,8 +42,9 @@ Checks the specified `$str` ends with the given `$needle`.
 
 ## strNullOrEmpty
 #### public static function strNullOrEmpty(string $str)
-Checks the specified `$str` is not null, not empty or and is a string. For example
-`Prelim::strNullOrEmpty(123)` would return false.
+Checks the specified `$str` is a string and is not null or empty. For example
+`Prelim::strNullOrEmpty(123)` would return false, where as `Prelim::strNullOrEmpty('123')`
+would return true.
 
 ## clamp
 #### public static function clamp(numeric $val, numeric $min=null, numeric $max=null)

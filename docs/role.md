@@ -8,9 +8,9 @@ array should follow the format `array('role' => array('perm1', 'perm2'), ...)`. 
 return `true` on success, `false` on failure.
 
 ## reset
-#### public static function reset(mixed $role=null)
-Resets either the given `$role` or if `$role` is set to `true` will reset
-(clear) all permissions currently stored for all roles. Will return `true` on
+#### public static function remove(mixed $role=null)
+Removes either the given `$role` and all of its permissions or if `$role` is set to
+`true`, this will remove all roles & permissions currently stored. Will return `true` on
 success, `false` on failure.
 
 ## getRoles
@@ -39,15 +39,15 @@ on success, `false` on failure.
 
 ## can
 #### public static function can(string $role, string $perm)
-Checks if the specified `$role` has (or can perform) the given `$perm` (permission).
+Checks if the specified `$role` has the given `$perm` (permission).
 
 !!! note
-    The name `can` has been chosen for code readibility reasons. For example,
+    The function name `can` has been chosen for readibility reasons. For example,
     checking if an admin can create posts is simply written out as
     `if(Role::can('admin', 'create_posts'))...`
 
 ## inherit
 #### public static function inherit(string $role, string $from)
-Adds all the roles from the role `$from` into `$role`. This is useful when creating
-a superior role that needs to inherit the roles from a role below it then add its
-own unique extra roles.
+Adds all the permissions from the role `$from` into the role `$role`. Useful when
+creating a superior role that needs to have the same permissions as the roles below it,
+then some extra permissions.
