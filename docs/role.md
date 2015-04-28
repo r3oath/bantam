@@ -7,7 +7,7 @@ Load the associative `$arr` representing roles and related permissions. The
 array should follow the format `array('role' => array('perm1', 'perm2'), ...)`. Will
 return `true` on success, `false` on failure.
 
-## reset
+## remove
 #### public static function remove(mixed $role=null)
 Removes either the given `$role` and all of its permissions or if `$role` is set to
 `true`, this will remove all roles & permissions currently stored. Will return `true` on
