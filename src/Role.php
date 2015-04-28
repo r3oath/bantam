@@ -53,7 +53,7 @@ class Role {
         return $success > 0;
     }
 
-    public static function reset($role=null) {
+    public static function remove($role=null) {
         if($role === null) {
             return false;
         }
@@ -123,6 +123,10 @@ class Role {
 
         if(Prelim::strNullOrEmpty($perm)) {
             return false;
+        }
+
+        if(in_array($perm, static::$roles[$role])) {
+            return true;
         }
 
         static::$roles[$role][] = $perm;

@@ -23,6 +23,7 @@ class Role extends atoum\test {
     public function testSet() {
         // Setup.
         bantam\Role::create('admin');
+        bantam\Role::create('manager');
 
         // Edge cases.
         $this->variable(bantam\Role::set(null, ''))->isEqualTo(false);
@@ -42,6 +43,13 @@ class Role extends atoum\test {
         $this->variable(bantam\Role::set('admin', 'create'))->isEqualTo(true);
         $this->variable(bantam\Role::can('admin', 'create'))->isEqualTo(true);
         $this->variable(bantam\Role::can('admin', 'create123'))->isEqualTo(false);
+        // Adding the same permission twice should only result in one entry.
+        bantam\Role::set('manager', 'duplicate');
+        bantam\Role::set('manager', 'duplicate');
+        $this->array(bantam\Role::getPerms('manager'))
+            ->strictlyContains('duplicate')
+            ->size
+                ->isEqualTo(1);
     }
 
     public function testInherit() {
@@ -70,7 +78,7 @@ class Role extends atoum\test {
 
     public function testGetRoles() {
         // Setup.
-        bantam\Role::reset(true);
+        bantam\Role::remove(true);
 
         // Normal use.
         $this->array(bantam\Role::getRoles())->isEmpty();
@@ -89,7 +97,7 @@ class Role extends atoum\test {
 
     public function testGetPerms() {
         // Setup.
-        bantam\Role::reset(true);
+        bantam\Role::remove(true);
         bantam\Role::create('admin');
 
         // Edge cases.
@@ -113,13 +121,13 @@ class Role extends atoum\test {
                 ->isEqualTo(2);
     }
 
-    public function testReset() {
+    public function testRemove() {
         // Edge cases.
-        $this->variable(bantam\Role::reset(''))->isEqualTo(false);
-        $this->variable(bantam\Role::reset(123))->isEqualTo(false);
-        $this->variable(bantam\Role::reset(null))->isEqualTo(false);
-        $this->variable(bantam\Role::reset())->isEqualTo(false);
-        $this->variable(bantam\Role::reset('not-exist'))->isEqualTo(false);
+        $this->variable(bantam\Role::remove(''))->isEqualTo(false);
+        $this->variable(bantam\Role::remove(123))->isEqualTo(false);
+        $this->variable(bantam\Role::remove(null))->isEqualTo(false);
+        $this->variable(bantam\Role::remove())->isEqualTo(false);
+        $this->variable(bantam\Role::remove('not-exist'))->isEqualTo(false);
 
         // Setup.
         bantam\Role::create('admin');
@@ -128,11 +136,11 @@ class Role extends atoum\test {
         bantam\Role::set('user', 'view');
 
         // Normal Use.
-        $this->variable(bantam\Role::reset('someone'))->isEqualTo(false);
-        $this->variable(bantam\Role::reset('admin'))->isEqualTo(true);
+        $this->variable(bantam\Role::remove('someone'))->isEqualTo(false);
+        $this->variable(bantam\Role::remove('admin'))->isEqualTo(true);
         $this->variable(bantam\Role::can('admin', 'create'))->isEqualTo(false);
         $this->variable(bantam\Role::exists('user'))->isEqualTo(true);
-        $this->variable(bantam\Role::reset(true))->isEqualTo(true);
+        $this->variable(bantam\Role::remove(true))->isEqualTo(true);
         $this->variable(bantam\Role::exists('user'))->isEqualTo(false);
     }
 
@@ -162,9 +170,9 @@ class Role extends atoum\test {
         $this->variable(bantam\Role::exists('user'))->isEqualTo(true);
         $this->variable(bantam\Role::can('user', 'view'))->isEqualTo(true);
         $this->variable(bantam\Role::can('user', 'comment'))->isEqualTo(true);
-        bantam\Role::reset(true);
+        bantam\Role::remove(true);
         $this->variable(bantam\Role::load($rolesTableMalformed2))->isEqualTo(false);
-        bantam\Role::reset(true);
+        bantam\Role::remove(true);
 
         // Normal use.
         $this->variable(bantam\Role::load($rolesTable))->isEqualTo(true);
