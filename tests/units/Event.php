@@ -6,6 +6,10 @@ use \mageekguy\atoum;
 use \r3oath\bantam;
 
 class Event extends atoum\test {
+    function userFunc() {
+        return null;
+    }
+
     function testRegister() {
         // Edge cases.
         $this->variable(bantam\Event::register(null, function(){}))

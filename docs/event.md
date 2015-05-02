@@ -5,11 +5,11 @@ then later executed when the event is fired.
 ## register
 #### public static function register(string $name, callable $fn)
 Register a new function `$fn` for the given event `$name`. Will return `true` on success,
-`false` otherwise. The function provided can either be a `Closure` or a `callable`.
+`false` otherwise. The function provided must be a `Closure`.
 
 !!! note
-    When registering a new function, the `Closure` method is generally cleaner looking
-    and shows the binding of the function to the event. For example,
+    When registering a new function, the `Closure` method better shows the binding
+    of a function to an event. For example,
     `Event::register('load', function(){ echo 'Hello World!'; });`
 
 ## fire
