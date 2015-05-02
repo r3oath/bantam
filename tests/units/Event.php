@@ -32,8 +32,6 @@ class Event extends atoum\test {
             ->isEqualTo(true);
         $this->variable(bantam\Event::register('test', function($args){}))
             ->isEqualTo(true);
-        $this->variable(bantam\Event::register('test', array($this, 'userFunc')))
-            ->isEqualTo(true);
     }
 
     function testFire() {

@@ -33,7 +33,7 @@ class Event {
             return false;
         }
 
-        if($fn instanceOf Closure || is_callable($fn)) {
+        if($fn instanceOf Closure) {
             static::$events[$name][] = $fn;
             return true;
         }
@@ -51,9 +51,6 @@ class Event {
             foreach (static::$events[$name] as $fn) {
                 if($fn instanceOf Closure) {
                     $fn($data);
-                    $fired++;
-                } else if(is_callable($fn)) {
-                    call_user_func($fn, $data);
                     $fired++;
                 }
             }
