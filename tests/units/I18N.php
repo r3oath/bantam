@@ -35,26 +35,37 @@ class I18N extends atoum\test {
         // Setup.
         bantam\I18N::load(__DIR__.'/locales/en.php');
 
+        // These tests required the use of the output buffer as the Atoum testing
+        // suite internally seems to use the class string which is a reserved
+        // PHP keyword. Tests using newer versions of PHP failed here.
+
         // Edge cases.
-        $this->output(function(){ bantam\I18N::e(null); })->isEqualTo('');
-        $this->output(function(){ bantam\I18N::e(123); })->isEqualTo('');
-        $this->output(function(){ bantam\I18N::e(false); })->isEqualTo('');
-        $this->output(function(){ bantam\I18N::e('bantam.hello', 'badvar'); })
-            ->isEqualTo('');
+        ob_start(); bantam\I18N::e(null);
+        $this->variable(ob_get_clean())->isEqualTo('');
+        ob_start(); bantam\I18N::e(123);
+        $this->variable(ob_get_clean())->isEqualTo('');
+        ob_start(); bantam\I18N::e(false);
+        $this->variable(ob_get_clean())->isEqualTo('');
+        ob_start(); bantam\I18N::e('bantam.hello', 'badvar');
+        $this->variable(ob_get_clean())->isEqualTo('');
 
         // Normal use.
-        $this->output(function(){ bantam\I18N::e('notexist'); })->isEqualTo('');
-        $this->output(function(){ bantam\I18N::e('notexist.either'); })->isEqualTo('');
-        $this->output(function(){ bantam\I18N::e('notexist.either.123'); })->isEqualTo('');
-        $this->output(function(){ bantam\I18N::e('bantam.hello'); })->isEqualTo('Hello World!');
-        $this->output(function(){ bantam\I18N::e('bantam.hello', array('ignoredvar')); })
-            ->isEqualTo('Hello World!');
-        $this->output(function(){ bantam\I18N::e('bantam.vars'); })
-            ->isEqualTo('The first {0} is better than the {1}');
-        $this->output(function(){ bantam\I18N::e('bantam.vars', array('cake')); })
-            ->isEqualTo('The first cake is better than the {1}');
-        $this->output(function(){ bantam\I18N::e('bantam.vars', array('cake', 'snake')); })
-            ->isEqualTo('The first cake is better than the snake');
+        ob_start(); bantam\I18N::e('notexist');
+        $this->variable(ob_get_clean())->isEqualTo('');
+        ob_start(); bantam\I18N::e('notexist.either');
+        $this->variable(ob_get_clean())->isEqualTo('');
+        ob_start(); bantam\I18N::e('notexist.either.123');
+        $this->variable(ob_get_clean())->isEqualTo('');
+        ob_start(); bantam\I18N::e('bantam.hello');
+        $this->variable(ob_get_clean())->isEqualTo('Hello World!');
+        ob_start(); bantam\I18N::e('bantam.hello', array('ignoredvar'));
+        $this->variable(ob_get_clean())->isEqualTo('Hello World!');
+        ob_start(); bantam\I18N::e('bantam.vars');
+        $this->variable(ob_get_clean())->isEqualTo('The first {0} is better than the {1}');
+        ob_start(); bantam\I18N::e('bantam.vars', array('cake'));
+        $this->variable(ob_get_clean())->isEqualTo('The first cake is better than the {1}');
+        ob_start(); bantam\I18N::e('bantam.vars', array('cake', 'snake'));
+        $this->variable(ob_get_clean())->isEqualTo('The first cake is better than the snake');
     }
 
     function testR() {
